@@ -1,6 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-export async function GET(req: NextRequest) {
-  console.log("🚀 ~ GET ~ req:", req);
-  return NextResponse.json({ data: "text" });
+export async function GET() {
+  const res = await fetch("http://localhost:1337/api/todos");
+
+  return NextResponse.json({ data: await res.json() });
 }
