@@ -24,8 +24,6 @@ function Page() {
     const [image] = Array.from(filesList);
 
     setImage(image);
-
-    // event.target.value = "";
   };
 
   const onHandleTitleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -41,7 +39,7 @@ function Page() {
     image && formData.append("files.image", image, "image");
     formData.append("data", JSON.stringify(data));
 
-    const res = await fetch("http://localhost:1337/api/todos", {
+    const res = await fetch("http://localhost:1337/api/todos?populate=*", {
       method: "POST",
       body: formData,
     });
