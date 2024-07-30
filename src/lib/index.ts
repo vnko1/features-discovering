@@ -7,12 +7,3 @@ export const createSignature = async (dataString: string) => {
   hmac.update(dataString, "utf8");
   return hmac.digest("hex");
 };
-
-export async function pay(formData: FormData) {
-  const res = await fetch("https://secure.wayforpay.com/pay", {
-    method: "POST",
-    body: formData,
-  });
-
-  console.log("🚀 ~ pay ~ data:", res);
-}
