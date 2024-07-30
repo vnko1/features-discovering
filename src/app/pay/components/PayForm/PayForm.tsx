@@ -7,38 +7,32 @@ const merchantAccount = "test_merch_n1";
 const merchantDomainName = "www.market.ua";
 
 const PayForm: FC<PayFormProps> = async ({
+  orderReference,
+  orderDate,
+  amount,
+  currency,
   productName,
   productPrice,
   productCount,
-  clientFirstName,
-  clientLastName,
-  clientAddress,
-  clientCity,
-  clientEmail,
-  defaultPaymentSystem,
-  language,
-  ...props
+  ...restFields
 }) => {
-  const signArray = [
+  const mainFields = {
     merchantAccount,
     merchantDomainName,
-    ...Object.values({ ...props }),
-    ...productName,
-    ...productCount,
-    ...productPrice,
-  ];
-
-  const metaFields = {
-    clientFirstName,
-    clientLastName,
-    clientAddress,
-    clientCity,
-    clientEmail,
-    language,
-    defaultPaymentSystem,
+    orderReference,
+    orderDate,
+    amount,
+    currency,
   };
 
-  const signature = await createSignature(signArray.join(";"));
+  const signArr = Object.values({
+    ...mainFields,
+    productName,
+    productCount,
+    productPrice,
+  }).flatMap((el) => el);
+
+  const signature = await createSignature(signArr.join(";"));
 
   return (
     <form
@@ -52,7 +46,7 @@ const PayForm: FC<PayFormProps> = async ({
         defaultValue={merchantDomainName}
         hidden
       />
-      {Object.entries(props).map(([key, value], index) => (
+      {Object.entries(mainFields).map(([key, value], index) => (
         <input key={index} name={key} defaultValue={value} hidden />
       ))}
       {productName.map((product, index) => (
@@ -74,7 +68,7 @@ const PayForm: FC<PayFormProps> = async ({
           hidden
         />
       ))}
-      {Object.entries(metaFields).map(([key, value], index) => (
+      {Object.entries(restFields).map(([key, value], index) => (
         <input key={index} name={key} defaultValue={value} hidden />
       ))}
       <input name="merchantSignature" defaultValue={signature} hidden />

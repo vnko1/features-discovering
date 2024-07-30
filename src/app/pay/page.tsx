@@ -9,18 +9,11 @@ const Pay = () => {
         amount={1547.36}
         currency="UAH"
         productName={[
-          "Процессор Intel Core i5-4670 3.4GHz",
+          "Процессор",
           "Память Kingston DDR3-1600 4096MB PC3-12800",
         ]}
-        productPrice={[1000, 547.36]}
+        productPrice={[3000, 547.36]}
         productCount={[1, 1]}
-        clientFirstName="Вася"
-        clientLastName="Пупкин"
-        clientAddress="пр. Гагарина, 12"
-        clientCity="Київ"
-        clientEmail="some@mail.com"
-        defaultPaymentSystem="card"
-        language="EN"
       />
     </main>
   );
