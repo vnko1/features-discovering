@@ -40,24 +40,23 @@ const PayForm: FC<PayFormProps> = async ({
       action="https://secure.wayforpay.com/pay"
       acceptCharset="utf-8"
     >
-      <input name="merchantAccount" defaultValue={merchantAccount} hidden />
-      <input
-        name="merchantDomainName"
-        defaultValue={merchantDomainName}
-        hidden
-      />
       {Object.entries(mainFields).map(([key, value], index) => (
-        <input key={index} name={key} defaultValue={value} hidden />
+        <input key={index} name={key} defaultValue={value} type="hidden" />
       ))}
       {productName.map((product, index) => (
-        <input key={index} name="productName[]" defaultValue={product} hidden />
+        <input
+          key={index}
+          name="productName[]"
+          defaultValue={product}
+          type="hidden"
+        />
       ))}
       {productPrice.map((product, index) => (
         <input
           key={index}
           name="productPrice[]"
           defaultValue={product}
-          hidden
+          type="hidden"
         />
       ))}
       {productCount.map((product, index) => (
@@ -65,11 +64,11 @@ const PayForm: FC<PayFormProps> = async ({
           key={index}
           name="productCount[]"
           defaultValue={product}
-          hidden
+          type="hidden"
         />
       ))}
       {Object.entries(restFields).map(([key, value], index) => (
-        <input key={index} name={key} defaultValue={value} hidden />
+        <input key={index} name={key} defaultValue={value} type="hidden" />
       ))}
       <input name="merchantSignature" defaultValue={signature} hidden />
       <button type="submit">Оплатить</button>
