@@ -3,7 +3,8 @@ import { redirect } from "next/navigation";
 
 export async function POST(req: NextRequest) {
   const data = await req.formData();
-  console.log("🚀 ~ POST PAY ~ data:", data);
+  const declineMessage = data.get("reason");
+  if (declineMessage) redirect(`/declined?reason=${declineMessage}`);
 
-  redirect("/pay");
+  redirect("/accepted");
 }

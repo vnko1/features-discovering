@@ -1,10 +1,11 @@
+import { randomUUID } from "crypto";
 import PayForm from "./components";
 
 const Pay = () => {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <PayForm
-        orderReference="DH1722232805s81111"
+        orderReference={randomUUID()}
         orderDate={Date.now()}
         amount={15456.36}
         currency="UAH"
