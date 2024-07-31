@@ -4,9 +4,9 @@ const Pay = () => {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <PayForm
-        orderReference="DH1722328058"
-        orderDate={1415379863}
-        amount={1547.36}
+        orderReference="DH1722232805s81111"
+        orderDate={Date.now()}
+        amount={15456.36}
         currency="UAH"
         productName={[
           "Процессор",
@@ -14,6 +14,7 @@ const Pay = () => {
         ]}
         productPrice={[3000, 547.36]}
         productCount={[1, 1]}
+        returnUrl="http://localhost:3000/api/pay"
       />
     </main>
   );

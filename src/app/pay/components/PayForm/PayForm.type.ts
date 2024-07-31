@@ -15,4 +15,6 @@ export type PayFormProps = {
   defaultPaymentSystem?: string;
   clientPhone?: string;
   merchantTransactionSecureType?: string;
+  returnUrl?: string;
+  serviceUrl?: string;
 };
