@@ -5,6 +5,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <Link href={"/fetch"}>FETCH page</Link>
       <Link href={"/pay"}>PAY page</Link>
+      {process.env.customKey}
     </main>
   );
 }
