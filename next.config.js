@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  env: { customKey: process.env.TEST },
+  env: { customKey: process.env.TEST, url: process.env.URL },
   images: {
     remotePatterns: [
       {

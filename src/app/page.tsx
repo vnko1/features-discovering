@@ -6,7 +6,9 @@ export default function Home() {
       <Link href={"/fetch"}>FETCH page</Link>
       <Link href={"/pay"}>PAY page</Link>
       <Link href={"/markdown"}>Markdown</Link>
+      <Link href={"/animate"}>Animate</Link>
       {process.env.customKey}
+      {process.env.url}
     </main>
   );
 }
