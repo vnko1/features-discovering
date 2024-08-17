@@ -8,6 +8,8 @@ export default function Home() {
       <Link href={"/markdown"}>Markdown</Link>
       <Link href={"/animate"}>Animate</Link>
       <Link href={"/video"}>Video</Link>
+      <Link href={"/customVideo"}>CVideo</Link>
+      <Link href={"/reactPlayer"}>RPlayer</Link>
       {process.env.customKey}
       {process.env.url}
     </main>
