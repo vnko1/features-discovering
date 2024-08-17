@@ -1,13 +1,11 @@
 import Image from "next/image";
-import axios from "axios";
+// import axios from "axios";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 
 export default async function Home() {
-  const {
-    data: { article },
-  } = await axios("http://localhost:1337/api/articles/6");
+  // const res = await axios("http://localhost:1337/api/articles/6");
 
   return (
     <div>
@@ -31,7 +29,7 @@ export default async function Home() {
             },
           }}
         >
-          {article}
+          {null}
         </Markdown>
       </p>
     </div>
