@@ -8,8 +8,8 @@ const SVG = () => {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className={styles.icon}
-        width="64"
-        height="64"
+        width="48"
+        height="48"
         viewBox="0 0 48 48"
       >
         <rect
