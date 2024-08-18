@@ -10,6 +10,7 @@ export default function Home() {
       <Link href={"/video"}>Video</Link>
       <Link href={"/customVideo"}>CVideo</Link>
       <Link href={"/reactPlayer"}>RPlayer</Link>
+      <Link href={"/nextVideo"}>NPlayer</Link>
       {process.env.customKey}
       {process.env.url}
     </main>

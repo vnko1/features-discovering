@@ -17,7 +17,7 @@ function Page() {
   }, []);
 
   return (
-    <main className="flex h-screen items-center justify-between p-24 ">
+    <main className="flex h-screen items-center justify-between p-24">
       {video ? (
         <ReactPlayer
           style={{ position: "relative" }}
