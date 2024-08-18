@@ -1,6 +1,5 @@
 import React from "react";
 import Player from "next-video/player";
-import Video from "next-video";
 import axios from "axios";
 
 async function Page() {
