@@ -11,6 +11,7 @@ export default function Home() {
       <Link href={"/customVideo"}>CVideo</Link>
       <Link href={"/reactPlayer"}>RPlayer</Link>
       <Link href={"/nextVideo"}>NPlayer</Link>
+      <Link href={"/slider"}>Slider</Link>
       {process.env.customKey}
       {process.env.url}
     </main>
