@@ -11,7 +11,7 @@ async function Page() {
 
   return (
     <main className="flex h-screen items-center justify-between p-24">
-      <div className="w-full max-w-[900px] h-full max-h-[750px]">
+      <div className="w-full max-w-[400px] h-full max-h-[750px]">
         <Player
           defaultHiddenCaptions
           src={video.url}
