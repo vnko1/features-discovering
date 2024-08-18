@@ -5,6 +5,8 @@ function Page() {
     { url: "/IMG_5647.jpeg" },
     { url: "/IMG_5652.jpeg" },
     { url: "/IMG_5669.jpeg" },
+    { url: "/IMG_5799.jpeg" },
+    { url: "/IMG_5804.jpeg" },
   ];
   return (
     <main>
