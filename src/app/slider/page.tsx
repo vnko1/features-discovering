@@ -1,6 +1,6 @@
 "use client";
-// import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import React, { useState } from "react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import { RxDotFilled } from "react-icons/rx";
 
@@ -27,29 +27,29 @@ function Page() {
     const newIndex = isLastSlide ? 0 : cIndex + 1;
     setCIndex(newIndex);
   };
-  useEffect(() => {
-    const t = setInterval(() => {
-      nextSlide();
-    }, 1000 * 5);
-    return () => {
-      clearInterval(t);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cIndex]);
+  // useEffect(() => {
+  //   const t = setInterval(() => {
+  //     nextSlide();
+  //   }, 1000 * 5);
+  //   return () => {
+  //     clearInterval(t);
+  //   };
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [cIndex]);
 
   return (
     <main>
       <div className="max-w-[1400px] h-[780px] w-full m-auto py-16 px-4 relative group">
         <div
-          style={{ backgroundImage: `url(${slides[cIndex].url})` }}
-          className="w-full h-full rounded-2xl bg-center bg-cover duration-500"
+          // style={{ backgroundImage: `url(${slides[cIndex].url})` }}
+          className="relative w-full h-full rounded-2xl bg-center bg-cover duration-500 transition-all overflow-hidden"
         >
-          {/* <Image
+          <Image
             src={slides[cIndex].url}
             alt="alt"
             fill
-            className="w-full h-auto object-contain"
-          /> */}
+            className="w-full h-auto object-cover"
+          />
         </div>
         <div className="hidden group-hover:block absolute top-1/2 -translate-x-0 -translate-y-1/2 left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
           <BsChevronCompactLeft onClick={prevSlide} size={30} />
