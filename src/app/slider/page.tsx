@@ -48,7 +48,7 @@ function Page() {
             src={slides[cIndex].url}
             alt="alt"
             fill
-            sizes="100vw"
+            sizes="(min-width: 900px) 600px, (min-width: 600px) 300px, 100vw"
             priority
             onLoad={(i) => console.log(i)}
             className="w-full h-auto object-cover"
