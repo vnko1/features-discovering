@@ -36,7 +36,7 @@ function Page() {
   //   };
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [cIndex]);
-
+  console.log(process.env.customKey);
   return (
     <main>
       <div className="max-w-[1400px] h-[780px] w-full m-auto py-16 px-4 relative group">
@@ -48,6 +48,9 @@ function Page() {
             src={slides[cIndex].url}
             alt="alt"
             fill
+            sizes="100vw"
+            priority
+            onLoad={(i) => console.log(i)}
             className="w-full h-auto object-cover"
           />
         </div>
