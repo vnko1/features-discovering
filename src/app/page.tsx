@@ -15,6 +15,9 @@ export default function Home() {
         <Link href={"/slider"}>Slider</Link>
         <Link href={"/ratio"}>Ratio</Link>
         <Link href={"/text"}>Text</Link>
+        <Link href={"/section"}>Section</Link>
+        <Link href={"/cssCounter"}>CssCounters</Link>
+        <Link href={"/order"}>Order</Link>
       </div>
       {process.env.customKey}
       {process.env.url}

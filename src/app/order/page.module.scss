@@ -1,0 +1,23 @@
+.container {
+  @apply flex gap-[10px];
+}
+
+.box {
+  @apply w-[100px] h-[100px];
+}
+
+.red {
+  @apply bg-red-400 order-2;
+}
+
+.blue {
+  @apply bg-blue-400 order-1;
+}
+
+.green {
+  @apply bg-green-400 order-4;
+}
+
+.orange {
+  @apply bg-orange-400 order-3;
+}

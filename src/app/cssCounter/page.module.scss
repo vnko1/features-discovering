@@ -1,0 +1,10 @@
+.wrapper {
+  counter-reset: my-counter;
+}
+
+.container {
+  & h2::before {
+    counter-increment: my-counter;
+    content: "Section " counter(my-counter) " - ";
+  }
+}
