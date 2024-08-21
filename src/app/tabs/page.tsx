@@ -1,29 +1,41 @@
 import Link from "next/link";
 import React from "react";
 
-const tabs = [1, 2, 3, 4];
+const Tab = ({ value }: { value: number }) => {
+  return <div>Tab body {value}</div>;
+};
 
-const Page = ({
-  searchParams,
-}: {
-  searchParams: { tab: string | undefined };
-}) => {
-  const { tab } = searchParams;
-  console.log("🚀 ~ Page ~ tab:", tab);
+const tabs = [
+  { node: <Tab value={1} /> },
+  { node: <Tab value={2} /> },
+  { node: <Tab value={3} /> },
+  { node: <Tab value={4} /> },
+  { node: <Tab value={5} /> },
+];
+
+const Page = ({ searchParams }: { searchParams: { tab?: string } }) => {
+  const activeTabIndex = Math.max(
+    1,
+    Math.min(Number(searchParams.tab) || 1, tabs.length)
+  );
+
   return (
     <div className="w-full h-screen p-4">
       <div className="flex gap-3">
-        {tabs.map((tab) => (
+        {tabs.map((_, i) => (
           <Link
-            key={tab}
-            href={{ pathname: "/tabs", query: { tab: tab + "" } }}
+            key={i}
+            href={{ pathname: "/tabs", query: { tab: i + 1 } }}
+            className={`p-1 border border-red-100 bg-cyan-300 ${
+              activeTabIndex === i + 1 ? "bg-red-500" : ""
+            }`}
           >
-            Tab {tab}
+            Tab link {i + 1}
           </Link>
         ))}
       </div>
 
-      <div className="pt-4"></div>
+      <div className="pt-4">{tabs[activeTabIndex - 1].node}</div>
     </div>
   );
 };
