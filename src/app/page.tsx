@@ -14,6 +14,7 @@ export default function Home() {
         <Link href={"/nextVideo"}>NPlayer</Link>
         <Link href={"/slider"}>Slider</Link>
         <Link href={"/ratio"}>Ratio</Link>
+        <Link href={"/text"}>Text</Link>
       </div>
       {process.env.customKey}
       {process.env.url}
