@@ -13,6 +13,7 @@ export default function Home() {
         <Link href={"/reactPlayer"}>RPlayer</Link>
         <Link href={"/nextVideo"}>NPlayer</Link>
         <Link href={"/slider"}>Slider</Link>
+        <Link href={"/ratio"}>Ratio</Link>
       </div>
       {process.env.customKey}
       {process.env.url}
