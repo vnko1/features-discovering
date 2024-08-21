@@ -1,5 +1,6 @@
 // import axios from "axios";
 import React from "react";
+import styles from "./page.module.scss";
 
 const Page = () => {
   //   axios("http://localhost:1337/api/todos", {
@@ -14,7 +15,7 @@ const Page = () => {
   //       })
   //   );
   return (
-    <div className="w-full h-screen p-8">
+    <div className={styles.wrapper}>
       <h1>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam dolores
         placeat dignissimos natus quos voluptatibus, repudiandae repellendus quo

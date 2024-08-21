@@ -1,0 +1,15 @@
+.wrapper {
+  @apply w-full h-screen p-8;
+
+  //   & :where(h1) {
+  //     @apply text-red-600;
+  //   }
+
+  //   & :is(h2) {
+  //     @apply text-red-600;
+  //   }
+
+  & :not(h2) {
+    @apply text-red-600;
+  }
+}
