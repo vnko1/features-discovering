@@ -4,16 +4,23 @@ import styles from "./page.module.scss";
 
 const Tab = ({ value }: { value: number }) => {
   const [isActive, setIsActive] = useState(false);
+  const [isInitialRender, setIsInitialRender] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsActive(true);
-    }, 500);
+    if (isInitialRender) {
+      setIsInitialRender(false);
+    } else {
+      const timer = setTimeout(() => {
+        setIsActive(true);
+      }, 100);
 
-    return () => {
-      setIsActive(false);
-    };
-  }, []);
+      return () => {
+        clearTimeout(timer);
+        setIsActive(false); // Reset animation state on unmount
+      };
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
 
   return (
     <div className={`${styles.tab} ${isActive ? styles.active : ""}`}>
@@ -47,7 +54,7 @@ const ClientTabs = () => {
           </button>
         ))}
       </div>
-      <div className="pt-4">{tabs[currentIndex].node}</div>
+      <div className="pt-4 relative">{tabs[currentIndex].node}</div>
     </div>
   );
 };
