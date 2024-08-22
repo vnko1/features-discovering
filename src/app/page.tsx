@@ -19,6 +19,7 @@ export default function Home() {
         <Link href={"/cssCounter"}>CssCounters</Link>
         <Link href={"/order"}>Order</Link>
         <Link href={"/tabs"}>Tabs</Link>
+        <Link href={"/clientTabs"}>CTabs</Link>
       </div>
       {process.env.customKey}
       {process.env.url}

@@ -1,0 +1,6 @@
+.tab {
+  @apply transition-all duration-1000 opacity-0;
+  &.active {
+    @apply opacity-100;
+  }
+}

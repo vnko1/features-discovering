@@ -26,7 +26,7 @@ const Page = ({ searchParams }: { searchParams: { tab?: string } }) => {
           <Link
             key={i}
             href={{ pathname: "/tabs", query: { tab: i + 1 } }}
-            className={`p-1 border border-red-100 bg-cyan-300 ${
+            className={`p-1 border border-red-100 bg-cyan-300 transition-all duration-150 ${
               activeTabIndex === i + 1 ? "bg-red-500" : ""
             }`}
           >
