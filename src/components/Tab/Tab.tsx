@@ -11,7 +11,7 @@ const Tab = ({ value }: { value: number }) => {
     if (!isMounted) return setIsActive(true);
     const timer = setTimeout(() => {
       setIsActive(true);
-    }, 100);
+    }, 300);
 
     return () => {
       clearTimeout(timer);

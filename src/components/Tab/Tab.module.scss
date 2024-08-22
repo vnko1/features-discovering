@@ -1,11 +1,11 @@
 .tab {
-  @apply absolute transition-all duration-150;
+  @apply absolute transition-all duration-300;
 
   &.inactive {
-    @apply scale-0;
+    @apply scale-0 opacity-0;
   }
 
   &.active {
-    @apply scale-100;
+    @apply scale-100 opacity-100;
   }
 }
