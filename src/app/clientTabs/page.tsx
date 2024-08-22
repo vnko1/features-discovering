@@ -4,21 +4,16 @@ import styles from "./page.module.scss";
 
 const Tab = ({ value }: { value: number }) => {
   const [isActive, setIsActive] = useState(false);
-  const [isInitialRender, setIsInitialRender] = useState(true);
 
   useEffect(() => {
-    if (isInitialRender) {
-      setIsInitialRender(false);
-    } else {
-      const timer = setTimeout(() => {
-        setIsActive(true);
-      }, 100);
+    const timer = setTimeout(() => {
+      setIsActive(true);
+    }, 100);
 
-      return () => {
-        clearTimeout(timer);
-        setIsActive(false); // Reset animation state on unmount
-      };
-    }
+    return () => {
+      clearTimeout(timer);
+      setIsActive(false); // Reset animation state on unmount
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
