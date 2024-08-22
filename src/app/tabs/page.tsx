@@ -1,9 +1,10 @@
-import Link from "next/link";
 import React from "react";
+import Link from "next/link";
+import { Tab } from "@/components";
 
-const Tab = ({ value }: { value: number }) => {
-  return <div>Tab body {value}</div>;
-};
+// const Tab = ({ value }: { value: number }) => {
+//   return <div>Tab body {value}</div>;
+// };
 
 const tabs = [
   { node: <Tab value={1} /> },
