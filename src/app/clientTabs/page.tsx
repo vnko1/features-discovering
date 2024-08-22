@@ -28,12 +28,6 @@ const Tab = ({ value }: { value: number }) => {
       Tab body {value}
     </div>
   );
-
-  return (
-    <div className={`${styles.tab} ${isActive ? styles.active : ""}`}>
-      Tab body {value}
-    </div>
-  );
 };
 
 const tabs = [
