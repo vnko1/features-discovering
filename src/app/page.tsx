@@ -20,6 +20,7 @@ export default function Home() {
         <Link href={"/order"}>Order</Link>
         <Link href={"/tabs"}>Tabs</Link>
         <Link href={"/clientTabs"}>CTabs</Link>
+        <Link href={"/hover"}>Hover</Link>
       </div>
       {process.env.customKey}
       {process.env.url}
