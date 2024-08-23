@@ -21,6 +21,7 @@ export default function Home() {
         <Link href={"/tabs"}>Tabs</Link>
         <Link href={"/clientTabs"}>CTabs</Link>
         <Link href={"/hover"}>Hover</Link>
+        <Link href={"/count"}>Count</Link>
       </div>
       {process.env.customKey}
       {process.env.url}
