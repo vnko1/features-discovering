@@ -4,8 +4,7 @@ import React from "react";
 function DefaultPage() {
   return (
     <div>
-      <div>Some Page</div>
-      <Link href={"/tabs"}>Tabs</Link> <Link href={"/par"}>Parallel</Link>
+      Analytics page <Link href={"/par/settings"}>Sets link</Link>
     </div>
   );
 }
