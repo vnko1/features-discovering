@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <nav className="flex gap-10 mb-10">
@@ -13,5 +13,3 @@ function Layout({ children }: { children: React.ReactNode }) {
     </>
   );
 }
-
-export default Layout;
