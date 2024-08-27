@@ -15,8 +15,8 @@ const Tab = ({
   return (
     <Link
       href={href}
-      className={`p-1 border border-red-100 bg-cyan-300 transition-all duration-150 ${
-        pathname === href ? "bg-red-500" : ""
+      className={`p-1 border border-red-100 ${
+        pathname === href ? "bg-red-500" : "bg-cyan-300"
       }`}
     >
       {children}
