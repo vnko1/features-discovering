@@ -26,6 +26,7 @@ export default function Home() {
         <Link href={"/slots"}>Slots</Link>
         <Link href={"/motion"}>Motion</Link>
         <Link href={"/animation"}>Animation</Link>
+        <Link href={"/form"}>Form</Link>
       </div>
 
       {process.env.customKey}
