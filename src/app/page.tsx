@@ -23,7 +23,7 @@ export default function Home() {
         <Link href={"/hover"}>Hover</Link>
         <Link href={"/count"}>Count</Link>
         <Link href={"/grid"}>Grid</Link>
-        <Link href={"/slots"}>Slots</Link>
+        <Link href={"/slots"}>Slots</Link> <Link href={"/motion"}>Motion</Link>
       </div>
 
       {process.env.customKey}
