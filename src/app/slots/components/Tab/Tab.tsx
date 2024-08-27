@@ -2,6 +2,8 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
+import styles from "./Tab.module.scss";
 
 const Tab = ({
   children,
@@ -15,11 +17,12 @@ const Tab = ({
   return (
     <Link
       href={href}
-      className={`p-1 border border-red-100 ${
-        pathname === href ? "bg-red-500" : "bg-cyan-300"
-      }`}
+      className={`${styles.link} ${pathname === href ? styles.selected : ""}`}
     >
       {children}
+      {pathname === href ? (
+        <motion.div className={styles.underline} layoutId="underline" />
+      ) : null}
     </Link>
   );
 };

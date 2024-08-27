@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./page.module.scss";
 
 function Layout({
   children,
@@ -8,11 +9,11 @@ function Layout({
   tabs: React.ReactNode;
 }) {
   return (
-    <div className="w-full h-screen flex flex-col p-10 items-center justify-around text-white bg-black">
+    <div className={styles.body}>
       <header>Header</header>
-      <main className="text-center">
+      <main className="flex flex-col items-center">
         {tabs}
-        {children}
+        <div className={styles.main}> {children}</div>
       </main>
       <footer>FOOTER</footer>
     </div>
