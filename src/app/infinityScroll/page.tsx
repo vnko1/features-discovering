@@ -2,6 +2,8 @@
 import React from "react";
 import styles from "./page.module.scss";
 
+const items = Array(15).fill("Partners name");
+
 function Page() {
   return (
     <section className="h-screen p-10 ">
@@ -10,102 +12,27 @@ function Page() {
           className={styles.slider}
           // data-reverse
           style={{
-            "--width": " 100px",
+            "--width": "100px",
             "--height": "50px",
-            "--qty": 10,
+            "--qty": items.length,
           }}
         >
           <ul className={styles.list}>
-            <li className={styles.item} style={{ "--position": 1 }}>
-              <button
-                onClick={() => {
-                  console.log("click");
-                }}
+            {items.map((el, i) => (
+              <li
+                key={i}
+                className={styles.item}
+                style={{ "--position": i + 1 }}
               >
-                ITEM
-              </button>
-            </li>
-            <li className={styles.item} style={{ "--position": 2 }}>
-              <button
-                onClick={() => {
-                  console.log("click");
-                }}
-              >
-                ITEM
-              </button>
-            </li>
-            <li className={styles.item} style={{ "--position": 3 }}>
-              <button
-                onClick={() => {
-                  console.log("click");
-                }}
-              >
-                ITEM
-              </button>
-            </li>
-            <li className={styles.item} style={{ "--position": 4 }}>
-              <button
-                onClick={() => {
-                  console.log("click");
-                }}
-              >
-                ITEM
-              </button>
-            </li>
-            <li className={styles.item} style={{ "--position": 5 }}>
-              <button
-                onClick={() => {
-                  console.log("click");
-                }}
-              >
-                ITEM
-              </button>
-            </li>
-            <li className={styles.item} style={{ "--position": 6 }}>
-              <button
-                onClick={() => {
-                  console.log("click");
-                }}
-              >
-                ITEM
-              </button>
-            </li>
-            <li className={styles.item} style={{ "--position": 7 }}>
-              <button
-                onClick={() => {
-                  console.log("click");
-                }}
-              >
-                ITEM
-              </button>
-            </li>
-            <li className={styles.item} style={{ "--position": 8 }}>
-              <button
-                onClick={() => {
-                  console.log("click");
-                }}
-              >
-                ITEM
-              </button>
-            </li>
-            <li className={styles.item} style={{ "--position": 9 }}>
-              <button
-                onClick={() => {
-                  console.log("click");
-                }}
-              >
-                ITEM
-              </button>
-            </li>
-            <li className={styles.item} style={{ "--position": 10 }}>
-              <button
-                onClick={() => {
-                  console.log("click");
-                }}
-              >
-                ITEM
-              </button>
-            </li>
+                <button
+                  onClick={() => {
+                    console.log("click");
+                  }}
+                >
+                  {el}
+                </button>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
