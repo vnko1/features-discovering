@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "./page.module.scss";
 
-const items = Array(1).fill("Partners name");
+const items = Array(20).fill("Partners name");
 
 function Page() {
   return (
