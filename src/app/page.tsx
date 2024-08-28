@@ -27,6 +27,8 @@ export default function Home() {
         <Link href={"/motion"}>Motion</Link>
         <Link href={"/animation"}>Animation</Link>
         <Link href={"/modal"}>MODAL</Link>
+        <Link href={"/infinityScroll"}>Infinity Scroll</Link>
+        <Link href={"/parallel"}>Parallel</Link>
       </div>
 
       {process.env.customKey}
