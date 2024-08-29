@@ -30,6 +30,7 @@ export default function Home() {
         <Link href={"/infinityScroll"}>Infinity Scroll</Link>
         <Link href={"/parallel"}>Parallel</Link>
         <Link href={"/responsive"}>Responsive</Link>
+        <Link href={"/serverChildren"}>ServerChildren</Link>
       </div>
 
       {process.env.customKey}
