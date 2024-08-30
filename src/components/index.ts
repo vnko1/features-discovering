@@ -1,1 +1,1 @@
-export { default } from "./UIKit";
+export * from "./UIKit";
