@@ -31,7 +31,8 @@ export default function Home() {
         <Link href={"/parallel"}>Parallel</Link>
         <Link href={"/responsive"}>Responsive</Link>
         <Link href={"/serverChildren"}>ServerChildren</Link>
-        <Link href={"/suspense"}>Suspense</Link>
+        <Link href={"/suspense"}>Suspense</Link>{" "}
+        <Link href={"/cache"}>Cache</Link>
       </div>
 
       {process.env.customKey}
