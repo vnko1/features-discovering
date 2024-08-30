@@ -8,6 +8,9 @@ export default function Home() {
       <Button className={styles.btn} icon={IconsEnum.Arrow}>
         Безкоштовні уроки
       </Button>
+
+
+      </div>
     </main>
   );
 }
