@@ -33,6 +33,7 @@ export default function Home() {
         <Link href={"/serverChildren"}>ServerChildren</Link>
         <Link href={"/suspense"}>Suspense</Link>{" "}
         <Link href={"/cache"}>Cache</Link>
+        <Link href={"/caching"}>Caching</Link>
       </div>
 
       {process.env.customKey}
