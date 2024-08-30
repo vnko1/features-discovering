@@ -1,5 +1,5 @@
 import React from "react";
-// import styles from "./page.module.scss";
+import styles from "./page.module.scss";
 import Image from "next/image";
 function Page() {
   return (
@@ -17,7 +17,7 @@ function Page() {
         <h1 className="mb-2 text-4xl font-medium max-sm:text-center">
           Headline
         </h1>
-        <p>
+        <p className={styles.text}>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis ab
           facere, quas non totam esse fugiat, sed ut suscipit error architecto
           ipsam deserunt corrupti at voluptatum maiores? Deserunt, consequuntur
