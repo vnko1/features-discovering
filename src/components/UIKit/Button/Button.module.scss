@@ -8,16 +8,17 @@
   height: 80px;
   padding: 16px 0;
   border-radius: 78px;
+  border: none;
 
   font-size: 1.75rem;
   font-weight: 600;
   line-height: 120%;
 
   transition: all var(--transition-duration) ease-in-out;
+  cursor: pointer;
 
-  @media screen and (max-width: 763px) {
-    height: 60px;
-    font-size: 1.25rem;
+  &Left {
+    flex-direction: row-reverse;
   }
 
   &.primary {
@@ -27,6 +28,7 @@
     &:hover,
     &:focus {
       background-color: var(--secondary-bg-btn);
+      color: var(--accent-color);
     }
   }
 
@@ -38,6 +40,20 @@
   &.accent {
     background-color: var(--accent-color);
     color: var(--secondary-text);
+
+    & svg {
+      fill: var(--secondary-text);
+      stroke: var(--secondary-text);
+    }
+  }
+
+  @media screen and (max-width: 763px) {
+    height: 60px;
+    font-size: 1.25rem;
   }
 }
-// color: #232323;
+
+.icon {
+  // fill: currentColor;
+  // stroke: currentColor;
+}
