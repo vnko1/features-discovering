@@ -1,11 +1,15 @@
 // import { cookies } from "next/headers";
 // import { unstable_noStore } from "next/cache";
+
 import { Suspense } from "react";
 
 async function Loader() {
   //   cookies();
   // unstable_noStore();
-  const res = await fetch("https://api.vercel.app/blog", { cache: "no-store" });
+  const res = await fetch("https://api.vercel.app/blog", {
+    cache: "no-store",
+    // next: { revalidate: 1 },
+  });
   const posts = await res.json();
 
   return (
