@@ -66,13 +66,22 @@
 
 .radioButtons {
   display: grid;
-  // grid-template-columns: repeat(4, auto);
-  // flex-wrap: wrap;
-  // justify-content: space-between;
-  // align-items: center;
+  grid-template-columns: repeat(auto-fill, 180px);
+  justify-content: center;
   gap: 10px;
 
+  width: 100%;
+
   @media screen and (max-width: 833px) {
+  }
+
+  @media screen and (max-width: 1280px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 833px) {
+    grid-template-columns: repeat(auto-fill, 136px);
+    grid-template-rows: repeat(2, 1fr);
     gap: 15px;
   }
 }

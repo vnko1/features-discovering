@@ -13,19 +13,19 @@ const fields = [
     name: "name",
     type: "text",
     placeholder: "Імʼя",
-    // rules: { required: true },
+    rules: { required: true },
   },
   {
     name: "email",
     type: "text",
     placeholder: "Пошта",
-    // rules: { required: true },
+    rules: { required: true },
   },
   {
     name: "phone",
     type: "tel",
     placeholder: "Телефон",
-    // rules: { required: true },
+    rules: { required: true },
   },
 ];
 
