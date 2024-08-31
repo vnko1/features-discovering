@@ -65,10 +65,11 @@
 }
 
 .radioButtons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  // grid-template-columns: repeat(4, auto);
+  // flex-wrap: wrap;
+  // justify-content: space-between;
+  // align-items: center;
   gap: 10px;
 
   @media screen and (max-width: 833px) {
