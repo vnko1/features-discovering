@@ -8,24 +8,19 @@ import {
 } from "react-hook-form";
 import cn from "classnames";
 
-import styles from "./Input.module.scss";
+import { InputColorType } from "@/types";
+import styles from "./Field.module.scss";
 
-type InputColorType = "primary" | "secondary";
-type InputProps = { color?: InputColorType } & Partial<
+type FieldProps = { color?: InputColorType } & Partial<
   InputHTMLAttributes<HTMLInputElement>
 >;
 
-const Input = ({
+const Field = ({
   className,
-  name,
   color = "primary",
-
   ...props
-}: UseControllerProps<FieldValues> & InputProps) => {
-  const { field, fieldState } = useController({
-    ...props,
-    name,
-  });
+}: UseControllerProps<FieldValues> & FieldProps) => {
+  const { field, fieldState } = useController(props);
   const { error, isTouched } = fieldState;
 
   const isErrorValidation = isTouched && error;
@@ -42,4 +37,4 @@ const Input = ({
   return <input {...field} {...props} className={inputClassNames} />;
 };
 
-export default Input;
+export default Field;

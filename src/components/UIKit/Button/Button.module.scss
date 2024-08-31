@@ -12,7 +12,7 @@
 
   font-size: 1.75rem;
   font-weight: 600;
-  line-height: 120%;
+  line-height: 1.5rem;
 
   transition: all var(--transition-duration) ease-in-out;
   cursor: pointer;
@@ -23,7 +23,7 @@
 
   &.primary {
     background-color: var(--green);
-    color: var(--black-text);
+    color: var(--dark);
 
     &:hover,
     &:focus {

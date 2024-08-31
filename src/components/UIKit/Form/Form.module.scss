@@ -7,6 +7,22 @@
   width: 100%;
 }
 
+.inputsWrapper {
+  width: 100%;
+  padding: 98px 66px;
+  border-radius: 50px;
+
+  background-color: var(--dark);
+
+  @media screen and (max-width: 1280px) {
+    padding: 86px 50px;
+  }
+
+  @media screen and (max-width: 833px) {
+    padding: 40px;
+  }
+}
+
 .fieldsWrapper {
   display: inline-flex;
   flex-direction: column;
@@ -15,16 +31,47 @@
   gap: 20px;
 
   width: 100%;
-  padding: 98px 66px;
-  border-radius: 50px;
+}
 
-  background-color: var(--black-text);
+.radioGroupsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
 
-  @media screen and (max-width: 1280px) {
-    padding: 86px 50px;
+  margin-top: 50px;
+
+  @media screen and (max-width: 833px) {
+    gap: 24px;
+    margin-top: 30px;
+  }
+}
+
+.radioGroupsLabel {
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.5rem;
+
+  color: var(--white);
+
+  transition: all var(--transition-duration) ease-in-out;
+
+  &.error {
+    color: var(--error);
   }
 
   @media screen and (max-width: 833px) {
-    padding: 40px;
+    font-size: 1.125rem;
+  }
+}
+
+.radioButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+
+  @media screen and (max-width: 833px) {
+    gap: 15px;
   }
 }

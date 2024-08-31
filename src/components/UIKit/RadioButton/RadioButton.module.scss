@@ -1,0 +1,63 @@
+.label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  cursor: pointer;
+
+  @media screen and (max-width: 1280px) {
+    max-width: 150px;
+  }
+
+  @media screen and (max-width: 833px) {
+    max-width: 138px;
+  }
+}
+
+.field {
+  position: absolute;
+  width: 0.1px;
+  height: 0.1px;
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+
+  &:checked {
+    & + .button.primary {
+      border-color: var(--dark);
+      color: var(--dark);
+      background-color: var(--green);
+    }
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  padding: 16px 50px;
+  border-radius: 50px;
+  border-width: 1px;
+  border-style: solid;
+
+  font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 1.5rem;
+
+  outline: none;
+  transition: all var(--transition-duration) ease-in-out;
+
+  @media screen and (max-width: 833px) {
+    font-size: 1.125rem;
+  }
+
+  &.primary {
+    background-color: transparent;
+    border-color: var(--white);
+    color: var(--white);
+  }
+}
