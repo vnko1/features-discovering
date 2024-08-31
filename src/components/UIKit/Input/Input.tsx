@@ -19,9 +19,13 @@ const Input = ({
   className,
   name,
   color = "primary",
+
   ...props
 }: UseControllerProps<FieldValues> & InputProps) => {
-  const { field, fieldState } = useController({ ...props, name });
+  const { field, fieldState } = useController({
+    ...props,
+    name,
+  });
   const { error, isTouched } = fieldState;
 
   const isErrorValidation = isTouched && error;
