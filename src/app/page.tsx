@@ -1,6 +1,7 @@
-import { Form } from "@/components";
+import { CourseCard, Form } from "@/components";
 
 import styles from "./page.module.scss";
+import { map } from "zod";
 
 const initialValues = {
   name: "",
@@ -56,6 +57,25 @@ const radioFields = [
   },
 ];
 
+const defCourse = {
+  title: "Основи інвестування для українців",
+  isNew: true,
+  isMain: true,
+  lecturer: {
+    name: "Імʼя Прізвище",
+    description: "Досягнення або посада",
+    photo: "/lecturer.jpg",
+  },
+};
+
+const courses = [
+  defCourse,
+  defCourse,
+  defCourse,
+  defCourse,
+  defCourse,
+];
+
 export default async function Home() {
   return (
     <main className={styles.main}>
@@ -70,7 +90,11 @@ export default async function Home() {
           buttonText='Надіслати заявку'
         />
       </div>
-      <div className={styles.courses}></div>
+      <div className={styles.courses}>
+        {courses.map((course, index) => (
+          <CourseCard key={index} {...course} id={index} href='/' />
+        ))}
+      </div>
     </main>
   );
 }

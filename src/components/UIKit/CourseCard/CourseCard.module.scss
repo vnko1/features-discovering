@@ -1,0 +1,173 @@
+.card {
+  position: relative;
+
+  width: 100%;
+  max-width: 578px;
+  padding: 60px 50px;
+  border-radius: 30px;
+
+  background-color: var(--light-grey);
+  cursor: pointer;
+  transition: all var(--transition-duration) ease-in-out;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/course-bg.png");
+    background-repeat: no-repeat;
+    background-size: 80% auto;
+    background-position: 250% center;
+    opacity: 0.2;
+    z-index: 1;
+
+    @media screen and (max-width: 1280px) {
+      background-size: 70% auto;
+      background-position: 250% center;
+    }
+
+    @media screen and (max-width: 833px) {
+      background-size: 80% auto;
+      background-position: 250% center;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--bg-dark);
+
+    & h2 {
+      color: var(--white);
+    }
+
+    & .lecturerName {
+      color: var(--white);
+    }
+
+    & .lecturerDescription {
+      color: var(--transparent-grey);
+    }
+  }
+  @media screen and (max-width: 1280px) {
+    max-width: none;
+    padding: 53px 50px;
+  }
+
+  @media screen and (max-width: 833px) {
+    padding: 40px;
+  }
+}
+
+.title {
+  max-width: 411px;
+  margin-bottom: 20px;
+
+  font-weight: 400;
+  line-height: 3.575rem;
+  font-size: 3.25rem;
+
+  color: var(--dark);
+
+  transition: all var(--transition-duration) ease-in-out;
+
+  @media screen and (max-width: 1280px) {
+    margin-bottom: 30px;
+    line-height: 3.438rem;
+    font-size: 3.125rem;
+  }
+
+  @media screen and (max-width: 833px) {
+    max-width: 212px;
+    margin-bottom: 20px;
+
+    font-size: 1.875rem;
+    line-height: 2.063rem;
+  }
+}
+
+.tags {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 55px;
+
+  & > p {
+    font-weight: 600;
+    line-height: 2.1rem;
+    font-size: 1.75rem;
+
+    color: var(--violet);
+
+    @media screen and (max-width: 1280px) {
+      font-size: 1.5rem;
+    }
+
+    @media screen and (max-width: 833px) {
+      font-size: 1.125rem;
+    }
+  }
+
+  @media screen and (max-width: 1280px) {
+    margin-bottom: 60px;
+  }
+
+  @media screen and (max-width: 833px) {
+    margin-bottom: 50px;
+  }
+}
+
+.lecturer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  &Photo {
+    position: relative;
+
+    width: 94px;
+    height: 94px;
+    border-radius: 50%;
+
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+  }
+
+  &TextWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &Name {
+    font-weight: 500;
+    line-height: 2.1rem;
+    font-size: 1.75rem;
+
+    color: var(--dark);
+
+    transition: all var(--transition-duration) ease-in-out;
+
+    @media screen and (max-width: 1280px) {
+      font-size: 1.5rem;
+    }
+
+    @media screen and (max-width: 1280px) {
+      font-size: 1.25rem;
+    }
+  }
+  &Description {
+    font-weight: 400;
+    line-height: 1.5rem;
+    font-size: 1.25rem;
+
+    color: var(--grey);
+
+    transition: all var(--transition-duration) ease-in-out;
+
+    @media screen and (max-width: 1280px) {
+      font-size: 1.125rem;
+    }
+  }
+}
