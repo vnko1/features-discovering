@@ -56,7 +56,7 @@ const radioFields = [
   },
 ];
 
-export default function Home() {
+export default async function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.container}>
@@ -70,6 +70,7 @@ export default function Home() {
           buttonText='Надіслати заявку'
         />
       </div>
+      <div className={styles.courses}></div>
     </main>
   );
 }

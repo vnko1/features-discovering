@@ -22,14 +22,14 @@ const Form: FC<FormProps> = ({
       defaultValues: values,
     });
 
-  const radioGroupsErrorValidation = radioGroups
-    ? formState.errors[radioGroups[0]?.name]
-    : null;
-
   const submit = async (data: FieldValues) => {
     onHandleSubmit && (await onHandleSubmit(data));
     reset();
   };
+
+  const radioGroupsErrorValidation = radioGroups
+    ? formState.errors[radioGroups[0]?.name]
+    : null;
 
   const renderFields = (
     <div className={styles.fieldsWrapper}>
