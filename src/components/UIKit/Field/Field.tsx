@@ -21,9 +21,9 @@ const Field = ({
   ...props
 }: UseControllerProps<FieldValues> & FieldProps) => {
   const { field, fieldState } = useController(props);
-  const { error, isTouched } = fieldState;
+  const { error } = fieldState;
 
-  const isErrorValidation = isTouched && error;
+  const isErrorValidation = error;
   const inputClassNames = cn(
     styles.field,
     {

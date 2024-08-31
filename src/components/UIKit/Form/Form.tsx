@@ -22,11 +22,11 @@ const Form: FC<FormProps> = ({
       defaultValues: values,
     });
 
-  const radioGroupsErrorValidation =
-    formState.errors[(radioGroups || [])[0]?.name];
+  const radioGroupsErrorValidation = radioGroups
+    ? formState.errors[radioGroups[0]?.name]
+    : null;
 
   const submit = async (data: FieldValues) => {
-    console.log("🚀 ~ submit ~ data:", data);
     onHandleSubmit && (await onHandleSubmit(data));
     reset();
   };
