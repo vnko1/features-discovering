@@ -22,33 +22,28 @@
   }
 
   &.primary {
-    background-color: var(--primary-bg-btn);
-    color: var(--primary-text);
+    background-color: var(--green);
+    color: var(--black-text);
 
     &:hover,
     &:focus {
-      background-color: var(--secondary-bg-btn);
-      color: var(--accent-color);
+      background-color: var(--white);
+      color: var(--salmon);
     }
   }
 
   &.secondary {
-    background-color: var(--secondary-bg-btn);
-    color: var(--accent-color);
+    background-color: var(--white);
+    color: var(--salmon);
   }
 
   &.accent {
-    background-color: var(--accent-color);
-    color: var(--secondary-text);
+    background-color: var(--salmon);
+    color: var(--white);
   }
 
-  @media screen and (max-width: 763px) {
+  @media screen and (max-width: 833px) {
     height: 60px;
     font-size: 1.25rem;
   }
 }
-
-// .icon {
-//   // fill: currentColor;
-//   // stroke: currentColor;
-// }

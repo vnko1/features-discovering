@@ -1,0 +1,30 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  width: 100%;
+}
+
+.fieldsWrapper {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  width: 100%;
+  padding: 98px 66px;
+  border-radius: 50px;
+
+  background-color: var(--black-text);
+
+  @media screen and (max-width: 1280px) {
+    padding: 86px 50px;
+  }
+
+  @media screen and (max-width: 833px) {
+    padding: 40px;
+  }
+}

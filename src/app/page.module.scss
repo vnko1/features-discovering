@@ -1,12 +1,55 @@
+@mixin container-width($gap, $qty) {
+  max-width: calc((100% - $gap) / $qty);
+
+  @media screen and (max-width: 1280px) {
+    max-width: none;
+  }
+}
+
 .main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+
+  width: 100%;
+  max-width: 1920px;
   min-height: 100vh;
+  padding: 60px 80px;
+  margin: 0 auto;
 }
 
-.btn {
-  max-width: 420px;
+.container {
+  --gap: 10px;
+  display: flex;
+  justify-content: center;
+  gap: var(--gap);
+
+  width: 100%;
+
+  @media screen and (max-width: 1280px) {
+    flex-direction: column;
+  }
+}
+
+.box {
+  width: 100%;
+  @include container-width(var(--gap), 2);
+
+  padding: 98px 66px;
+  border-radius: 50px;
+
+  background-color: var(--black-text);
+
+  @media screen and (max-width: 1280px) {
+    padding: 86px 50px;
+  }
+
+  @media screen and (max-width: 833px) {
+    padding: 40px;
+  }
+}
+
+.form {
+  @include container-width(var(--gap), 2);
 }

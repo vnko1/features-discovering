@@ -1,20 +1,41 @@
+"use client";
+
 import React, { InputHTMLAttributes } from "react";
-import { useController, UseControllerProps } from "react-hook-form";
+import {
+  FieldValues,
+  useController,
+  UseControllerProps,
+} from "react-hook-form";
 import cn from "classnames";
 
 import styles from "./Input.module.scss";
 
-type InputProps = Partial<InputHTMLAttributes<HTMLInputElement>>;
+type InputColorType = "primary" | "secondary";
+type InputProps = { color?: InputColorType } & Partial<
+  InputHTMLAttributes<HTMLInputElement>
+>;
 
-const Input = <T extends object>({
+const Input = ({
   className,
+  name,
+  color = "primary",
   ...props
-}: UseControllerProps<T> & InputProps) => {
-  const { field } = useController(props);
+}: UseControllerProps<FieldValues> & InputProps) => {
+  const { field, fieldState } = useController({ ...props, name });
+  const { error, isTouched } = fieldState;
 
-  const inputClassNames = cn(styles.field, className);
+  const isErrorValidation = isTouched && error;
+  const inputClassNames = cn(
+    styles.field,
+    {
+      [styles.primary]: color === "primary",
+      [styles.secondary]: color === "secondary",
+    },
+    { [styles.error]: isErrorValidation },
+    className
+  );
 
-  return <input {...props} {...field} className={inputClassNames} />;
+  return <input {...field} {...props} className={inputClassNames} />;
 };
 
 export default Input;

@@ -1,0 +1,40 @@
+.field {
+  width: 100%;
+  padding: 28px 30px;
+
+  border: none;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 100%;
+
+  background-color: transparent;
+  outline: none;
+
+  transition: all var(--transition-duration) ease-in-out;
+
+  @media screen and (max-width: 833px) {
+    padding: 16px 20px;
+
+    font-size: 1rem;
+  }
+
+  &.primary {
+    border-bottom-color: var(--white);
+    color: var(--white-transparent);
+
+    &::placeholder {
+      color: var(--white-transparent);
+    }
+
+    &.error {
+      border-bottom-color: var(--error);
+      color: var(--error);
+    }
+  }
+
+  //   &.secondary {
+  //   }
+}
