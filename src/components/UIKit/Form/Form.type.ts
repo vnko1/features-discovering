@@ -1,4 +1,3 @@
-import { FormHTMLAttributes } from "react";
 import {
   Control,
   FieldValues,
@@ -6,6 +5,7 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
+//* Type for field validation rules
 type Rule =
   | Omit<
       RegisterOptions<FieldValues, string>,
@@ -13,6 +13,7 @@ type Rule =
     >
   | undefined;
 
+//* Type for input fields
 type Input = {
   name: string;
   type: React.HTMLInputTypeAttribute;
@@ -20,6 +21,7 @@ type Input = {
   rules?: Rule;
 };
 
+//* Type for radio buttons
 type RadioButton = {
   name: string;
   label: string;
@@ -27,6 +29,7 @@ type RadioButton = {
   rules?: Rule;
 };
 
+//* Props for the custom form component
 export type CustomFormProps = {
   formValues: FieldValues;
   inputFields: Input[];
@@ -41,6 +44,7 @@ type InputProps = { control: Control<FieldValues, any> };
 
 export type FieldsProps = Pick<CustomFormProps, "inputFields"> &
   InputProps;
+
 export type RadioButtonsProps = {
   isError: boolean;
 } & Pick<CustomFormProps, "radioButtons" | "radioButtonsLabel"> &

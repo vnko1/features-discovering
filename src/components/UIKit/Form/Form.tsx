@@ -58,7 +58,7 @@ const CustomForm: FC<CustomFormProps> = ({
   ...props
 }) => {
   const { control, reset, formState } = useForm<FieldValues>({
-    defaultValues: formValues,
+    values: formValues,
   });
 
   const onHandleSubmit = async (data: FormDataTypes) => {
