@@ -4,22 +4,59 @@ import { FieldValues, useForm } from "react-hook-form";
 
 import { IconsEnum } from "@/types";
 import { Field, Button, RadioButton } from "..";
-import { FormProps } from "./Form.type";
+import {
+  FieldsProps,
+  FormProps,
+  RadioButtonsProps,
+} from "./Form.type";
 import styles from "./Form.module.scss";
 
+const Fields: React.FC<FieldsProps> = ({ control, inputFields }) => (
+  <div className={styles.fieldsWrapper}>
+    {inputFields.map((field, index) => (
+      <Field key={index} control={control} {...field} />
+    ))}
+  </div>
+);
+
+const RadioButtons: React.FC<RadioButtonsProps> = ({
+  control,
+  isError,
+  radioButtons,
+  radioButtonsLabel,
+}) => {
+  if (!radioButtons) return null;
+  return (
+    <div className={styles.radioGroupsWrapper}>
+      {radioButtonsLabel ? (
+        <p
+          className={`${styles.radioGroupsLabel} ${
+            isError ? styles.error : ""
+          }`}>
+          {radioButtonsLabel}
+        </p>
+      ) : null}
+      <div className={styles.radioButtons}>
+        {radioButtons.map((radio, index) => (
+          <RadioButton key={index} control={control} {...radio} />
+        ))}
+      </div>
+    </div>
+  );
+};
 const Form: FC<FormProps> = ({
   className,
-  values,
-  fields,
-  radioGroups,
-  radioGroupsLabel,
+  formValues,
   buttonText,
   onHandleSubmit,
+  inputFields,
+  radioButtons,
+  radioButtonsLabel,
   ...props
 }) => {
   const { control, handleSubmit, reset, formState } =
     useForm<FieldValues>({
-      defaultValues: values,
+      defaultValues: formValues,
     });
 
   const submit = async (data: FieldValues) => {
@@ -27,35 +64,9 @@ const Form: FC<FormProps> = ({
     reset();
   };
 
-  const radioGroupsErrorValidation = radioGroups
-    ? formState.errors[radioGroups[0]?.name]
+  const isRadioButtonsErrorValidation = radioButtons
+    ? formState.errors[radioButtons[0]?.name]
     : null;
-
-  const renderFields = (
-    <div className={styles.fieldsWrapper}>
-      {fields.map((field, index) => (
-        <Field key={index} control={control} {...field} />
-      ))}
-    </div>
-  );
-
-  const renderRadioButtons = radioGroups ? (
-    <div className={styles.radioGroupsWrapper}>
-      {radioGroupsLabel ? (
-        <p
-          className={`${styles.radioGroupsLabel} ${
-            radioGroupsErrorValidation ? styles.error : ""
-          }`}>
-          {radioGroupsLabel}
-        </p>
-      ) : null}
-      <div className={styles.radioButtons}>
-        {radioGroups.map((radio, index) => (
-          <RadioButton key={index} control={control} {...radio} />
-        ))}
-      </div>
-    </div>
-  ) : null;
 
   return (
     <form
@@ -63,8 +74,13 @@ const Form: FC<FormProps> = ({
       className={`${styles.form} ${className}`}
       onSubmit={handleSubmit(submit)}>
       <div className={styles.inputsWrapper}>
-        {renderFields}
-        {renderRadioButtons}
+        <Fields control={control} inputFields={inputFields} />
+        <RadioButtons
+          control={control}
+          radioButtons={radioButtons}
+          isError={!!isRadioButtonsErrorValidation}
+          radioButtonsLabel={radioButtonsLabel}
+        />
       </div>
       <Button color='accent' icon={IconsEnum.Arrow} type='submit'>
         {buttonText}

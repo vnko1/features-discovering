@@ -82,10 +82,10 @@ export default async function Home() {
         <div className={styles.box}></div>
         <Form
           className={styles.form}
-          values={initialValues}
-          fields={fields}
-          radioGroups={radioFields}
-          radioGroupsLabel='Оберіть, будь ласка, комфортний спосіб зв’язку'
+          formValues={initialValues}
+          inputFields={fields}
+          radioButtons={radioFields}
+          radioButtonsLabel='Оберіть, будь ласка, комфортний спосіб зв’язку'
           buttonText='Надіслати заявку'
         />
       </div>
