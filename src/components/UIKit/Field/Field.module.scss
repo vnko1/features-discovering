@@ -1,3 +1,7 @@
+.label {
+  width: 100%;
+}
+
 .field {
   width: 100%;
   padding: 28px 30px;
@@ -28,13 +32,13 @@
     &::placeholder {
       color: var(--white-transparent);
     }
+  }
 
+  &.primary,
+  &.secondary {
     &.error {
       border-bottom-color: var(--error);
       color: var(--error);
     }
   }
-
-  //   &.secondary {
-  //   }
 }

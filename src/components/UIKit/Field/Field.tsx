@@ -23,18 +23,21 @@ const Field = ({
   const { field, fieldState } = useController(props);
   const { error } = fieldState;
 
-  const isErrorValidation = error;
   const inputClassNames = cn(
     styles.field,
     {
       [styles.primary]: color === "primary",
       [styles.secondary]: color === "secondary",
     },
-    { [styles.error]: isErrorValidation },
+    { [styles.error]: error },
     className
   );
 
-  return <input {...field} {...props} className={inputClassNames} />;
+  return (
+    <label className={styles.label}>
+      <input {...field} {...props} className={inputClassNames} />
+    </label>
+  );
 };
 
 export default Field;
