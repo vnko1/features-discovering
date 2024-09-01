@@ -49,11 +49,12 @@ const CustomForm: FC<CustomFormProps> = ({
   className,
   formValues,
   buttonText,
-  onSubmit,
   inputFields,
   radioButtons,
   radioButtonsLabel,
   action,
+  onSubmit,
+  handleSubmit,
   ...props
 }) => {
   const { control, reset, formState } = useForm<FieldValues>({
@@ -65,7 +66,9 @@ const CustomForm: FC<CustomFormProps> = ({
       action(data.formData);
       return reset();
     }
-    onSubmit && (await onSubmit(data.data));
+
+    onSubmit && onSubmit(data);
+    handleSubmit && (await handleSubmit(data.data));
     reset();
   };
 
@@ -77,8 +80,8 @@ const CustomForm: FC<CustomFormProps> = ({
     <Form
       {...props}
       control={control}
-      className={`${styles.form} ${className}`}
-      onSubmit={onHandleSubmit}>
+      onSubmit={onHandleSubmit}
+      className={`${styles.form} ${className}`}>
       <div className={styles.inputsWrapper}>
         <Fields control={control} inputFields={inputFields} />
         <RadioButtons

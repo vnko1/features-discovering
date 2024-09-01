@@ -34,7 +34,7 @@ export type CustomFormProps = {
   radioButtonsLabel?: string;
   buttonText: string;
   className?: string;
-  onSubmit?: (data: FieldValues) => Promise<void>;
+  handleSubmit?: (data: FieldValues) => Promise<void>;
 } & Partial<FormProps<FieldValues>>;
 
 type InputProps = { control: Control<FieldValues, any> };
