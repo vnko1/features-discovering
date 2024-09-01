@@ -49,9 +49,7 @@ const Button: FC<ButtonProps> = ({
   return (
     <button {...props} className={buttonClassNames}>
       {children}
-      {icon && (
-        <Icon icon={icon} size={iconSize} className={styles.icon} />
-      )}
+      {icon && <Icon icon={icon} size={iconSize} />}
     </button>
   );
 };
