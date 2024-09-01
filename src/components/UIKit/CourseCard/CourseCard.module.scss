@@ -6,6 +6,7 @@
   border-radius: 30px;
 
   background-color: var(--light-grey);
+  background-color: var(--bg-dark);
 
   cursor: pointer;
   transition: all var(--transition-duration) ease-in-out;
@@ -20,18 +21,18 @@
     background-image: url("/course-bg.png");
     background-repeat: no-repeat;
     background-size: 80% auto;
-    background-position: 290% center;
+    background-position: 300% 50%;
     opacity: 0.2;
     z-index: 1;
 
     @media screen and (max-width: 1280px) {
-      background-size: 70% auto;
-      background-position: 250% center;
+      background-size: 60% auto;
+      background-position: 150% 50%;
     }
 
     @media screen and (max-width: 833px) {
-      background-size: 80% auto;
-      background-position: 250% center;
+      background-size: 60% auto;
+      background-position: 150% center;
     }
   }
 
