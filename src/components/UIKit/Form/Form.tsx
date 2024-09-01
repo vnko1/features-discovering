@@ -14,7 +14,7 @@ import styles from "./Form.module.scss";
 const Fields: React.FC<FieldsProps> = ({ control, inputFields }) => (
   <div className={styles.fieldsWrapper}>
     {inputFields.map((field, index) => (
-      <Field key={index} control={control} {...field} />
+      <Field {...field} key={index} control={control} />
     ))}
   </div>
 );
@@ -38,7 +38,7 @@ const RadioButtons: React.FC<RadioButtonsProps> = ({
       ) : null}
       <div className={styles.radioButtons}>
         {radioButtons.map((radio, index) => (
-          <RadioButton key={index} control={control} {...radio} />
+          <RadioButton {...radio} key={index} control={control} />
         ))}
       </div>
     </div>
