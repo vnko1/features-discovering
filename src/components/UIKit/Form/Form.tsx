@@ -46,6 +46,7 @@ const RadioButtons: React.FC<RadioButtonsProps> = ({
   );
 };
 const CustomForm: FC<CustomFormProps> = ({
+  className,
   formValues,
   buttonText,
   inputFields,
@@ -80,7 +81,7 @@ const CustomForm: FC<CustomFormProps> = ({
       {...props}
       control={control}
       onSubmit={onHandleSubmit}
-      className={`${styles.form} ${props.className}`}>
+      className={`${styles.form} ${className}`}>
       <div className={styles.inputsWrapper}>
         <Fields control={control} inputFields={inputFields} />
         <RadioButtons
