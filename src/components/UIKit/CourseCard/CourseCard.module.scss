@@ -2,11 +2,11 @@
   position: relative;
 
   width: 100%;
-  max-width: 578px;
   padding: 60px 50px;
   border-radius: 30px;
 
   background-color: var(--light-grey);
+
   cursor: pointer;
   transition: all var(--transition-duration) ease-in-out;
 
@@ -20,7 +20,7 @@
     background-image: url("/course-bg.png");
     background-repeat: no-repeat;
     background-size: 80% auto;
-    background-position: 250% center;
+    background-position: 290% center;
     opacity: 0.2;
     z-index: 1;
 
