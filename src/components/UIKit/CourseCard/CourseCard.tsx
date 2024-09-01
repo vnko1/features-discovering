@@ -1,8 +1,8 @@
 import React from "react";
-
-import styles from "./CourseCard.module.scss";
 import Image from "next/image";
 import Link from "next/link";
+
+import styles from "./CourseCard.module.scss";
 
 type CourseCardProps = {
   href: string;
@@ -29,13 +29,13 @@ const CourseCard = ({
         {isMain && <p>#ТОП</p>}
       </div>
       <div className={styles.lecturer}>
-        <div className={styles.lecturerPhoto}>
-          <Image
-            src={lecturer.photo}
-            alt={lecturer.description}
-            fill
-          />
-        </div>
+        <Image
+          src={lecturer.photo}
+          alt={lecturer.description}
+          width={94}
+          height={94}
+          className={styles.lecturerPhoto}
+        />
         <div className={styles.lecturerTextWrapper}>
           <p className={styles.lecturerName}>{lecturer.name}</p>
           <p className={styles.lecturerDescription}>
