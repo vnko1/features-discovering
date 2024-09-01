@@ -1,3 +1,4 @@
+// "use client";
 import { CourseCard, Form } from "@/components";
 
 import styles from "./page.module.scss";
@@ -75,7 +76,7 @@ const courses = [
   defCourse,
 ];
 
-export default async function Home() {
+export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.container}>

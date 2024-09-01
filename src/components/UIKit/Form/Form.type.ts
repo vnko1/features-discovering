@@ -2,6 +2,7 @@ import { FormHTMLAttributes } from "react";
 import {
   Control,
   FieldValues,
+  FormProps,
   RegisterOptions,
 } from "react-hook-form";
 
@@ -26,20 +27,29 @@ type RadioButton = {
   rules?: Rule;
 };
 
-export type FormProps = {
+export type CustomFormProps = {
   formValues: FieldValues;
   inputFields: Input[];
   radioButtons?: RadioButton[];
   radioButtonsLabel?: string;
   buttonText: string;
   className?: string;
-  onHandleSubmit?: (data: FieldValues) => Promise<void>;
-} & Partial<FormHTMLAttributes<HTMLFormElement>>;
+  onSubmit?: (data: FieldValues) => Promise<void>;
+} & Partial<FormProps<FieldValues>>;
 
 type InputProps = { control: Control<FieldValues, any> };
 
-export type FieldsProps = Pick<FormProps, "inputFields"> & InputProps;
+export type FieldsProps = Pick<CustomFormProps, "inputFields"> &
+  InputProps;
 export type RadioButtonsProps = {
   isError: boolean;
-} & Pick<FormProps, "radioButtons" | "radioButtonsLabel"> &
+} & Pick<CustomFormProps, "radioButtons" | "radioButtonsLabel"> &
   InputProps;
+
+export type FormDataTypes = {
+  data: FieldValues;
+  event?: React.BaseSyntheticEvent;
+  formData: FormData;
+  formDataJson: string;
+  method?: "post" | "put" | "delete";
+};

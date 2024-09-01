@@ -1,13 +1,14 @@
 "use client";
 import React, { FC } from "react";
-import { FieldValues, useForm } from "react-hook-form";
+import { FieldValues, Form, useForm } from "react-hook-form";
 
 import { IconsEnum } from "@/types";
 import { Field, Button, RadioButton } from "..";
 import {
   FieldsProps,
-  FormProps,
+  CustomFormProps,
   RadioButtonsProps,
+  FormDataTypes,
 } from "./Form.type";
 import styles from "./Form.module.scss";
 
@@ -44,23 +45,27 @@ const RadioButtons: React.FC<RadioButtonsProps> = ({
     </div>
   );
 };
-const Form: FC<FormProps> = ({
+const CustomForm: FC<CustomFormProps> = ({
   className,
   formValues,
   buttonText,
-  onHandleSubmit,
+  onSubmit,
   inputFields,
   radioButtons,
   radioButtonsLabel,
+  action,
   ...props
 }) => {
-  const { control, handleSubmit, reset, formState } =
-    useForm<FieldValues>({
-      defaultValues: formValues,
-    });
+  const { control, reset, formState } = useForm<FieldValues>({
+    defaultValues: formValues,
+  });
 
-  const onSubmit = async (data: FieldValues) => {
-    onHandleSubmit && (await onHandleSubmit(data));
+  const onHandleSubmit = async (data: FormDataTypes) => {
+    if (typeof action === "function") {
+      action(data.formData);
+      return reset();
+    }
+    onSubmit && (await onSubmit(data.data));
     reset();
   };
 
@@ -69,10 +74,11 @@ const Form: FC<FormProps> = ({
   );
 
   return (
-    <form
+    <Form
       {...props}
+      control={control}
       className={`${styles.form} ${className}`}
-      onSubmit={handleSubmit(onSubmit)}>
+      onSubmit={onHandleSubmit}>
       <div className={styles.inputsWrapper}>
         <Fields control={control} inputFields={inputFields} />
         <RadioButtons
@@ -85,8 +91,8 @@ const Form: FC<FormProps> = ({
       <Button color='accent' icon={IconsEnum.Arrow} type='submit'>
         {buttonText}
       </Button>
-    </form>
+    </Form>
   );
 };
 
-export default Form;
+export default CustomForm;
