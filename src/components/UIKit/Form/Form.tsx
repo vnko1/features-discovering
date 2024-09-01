@@ -64,9 +64,9 @@ const Form: FC<FormProps> = ({
     reset();
   };
 
-  const isRadioButtonsErrorValidation = radioButtons
-    ? formState.errors[radioButtons[0]?.name]
-    : null;
+  const isRadioButtonsError = !!(
+    radioButtons && formState.errors[radioButtons[0]?.name]
+  );
 
   return (
     <form
@@ -78,7 +78,7 @@ const Form: FC<FormProps> = ({
         <RadioButtons
           control={control}
           radioButtons={radioButtons}
-          isError={!!isRadioButtonsErrorValidation}
+          isError={isRadioButtonsError}
           radioButtonsLabel={radioButtonsLabel}
         />
       </div>
