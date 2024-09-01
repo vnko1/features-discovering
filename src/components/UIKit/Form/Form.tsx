@@ -59,7 +59,7 @@ const Form: FC<FormProps> = ({
       defaultValues: formValues,
     });
 
-  const submit = async (data: FieldValues) => {
+  const onSubmit = async (data: FieldValues) => {
     onHandleSubmit && (await onHandleSubmit(data));
     reset();
   };
@@ -72,7 +72,7 @@ const Form: FC<FormProps> = ({
     <form
       {...props}
       className={`${styles.form} ${className}`}
-      onSubmit={handleSubmit(submit)}>
+      onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.inputsWrapper}>
         <Fields control={control} inputFields={inputFields} />
         <RadioButtons
