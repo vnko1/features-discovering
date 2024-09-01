@@ -1,36 +1,32 @@
 "use client";
 
 import React, { FC, InputHTMLAttributes } from "react";
-import cn from "classnames";
-
-import { InputColorType } from "@/types";
-import styles from "./RadioButton.module.scss";
 import {
   FieldValues,
   useController,
   UseControllerProps,
 } from "react-hook-form";
+import cn from "classnames";
 
-type RadioButtonProps = {
+import { InputColorType } from "@/types";
+import styles from "./RadioButton.module.scss";
+
+type RadioButtonProps = UseControllerProps<FieldValues> & {
   label: string;
   color?: InputColorType;
-} & Partial<InputHTMLAttributes<HTMLInputElement>>;
+} & Omit<InputHTMLAttributes<HTMLInputElement>, "type">;
 
-const RadioButton = ({
+const RadioButton: React.FC<RadioButtonProps> = ({
   color = "primary",
   className,
   label,
   ...props
-}: UseControllerProps<FieldValues> & RadioButtonProps) => {
+}) => {
   const { field } = useController(props);
 
   const radioBtnClassNames = cn(
     styles.button,
-    {
-      [styles.primary]: color === "primary",
-      [styles.secondary]: color === "secondary",
-    },
-
+    styles[color],
     className
   );
   return (

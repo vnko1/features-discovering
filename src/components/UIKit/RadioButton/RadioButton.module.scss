@@ -1,10 +1,4 @@
 .label {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 100%;
-
   cursor: pointer;
 }
 
@@ -16,8 +10,8 @@
   opacity: 0;
   z-index: -1;
 
-  &:checked {
-    & + .button.primary {
+  &:checked + .button {
+    &.primary {
       border-color: var(--dark);
       color: var(--dark);
       background-color: var(--green);
@@ -30,7 +24,6 @@
   align-items: center;
   justify-content: center;
 
-  width: 100%;
   padding: 16px 50px;
   border-radius: 50px;
   border-width: 1px;
@@ -51,5 +44,10 @@
     background-color: transparent;
     border-color: var(--white);
     color: var(--white);
+  }
+
+  &.error {
+    border-color: var(--error);
+    color: var(--error);
   }
 }

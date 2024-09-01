@@ -1,7 +1,6 @@
 import { CourseCard, Form } from "@/components";
 
 import styles from "./page.module.scss";
-import { map } from "zod";
 
 const initialValues = {
   name: "",

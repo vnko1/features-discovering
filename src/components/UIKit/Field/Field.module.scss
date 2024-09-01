@@ -34,11 +34,8 @@
     }
   }
 
-  &.primary,
-  &.secondary {
-    &.error {
-      border-bottom-color: var(--error);
-      color: var(--error);
-    }
+  &.error {
+    border-bottom-color: var(--error);
+    color: var(--error);
   }
 }

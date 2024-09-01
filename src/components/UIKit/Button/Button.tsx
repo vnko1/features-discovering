@@ -1,5 +1,3 @@
-"use client";
-
 import React, { ButtonHTMLAttributes, FC } from "react";
 import Link from "next/link";
 import cn from "classnames";
@@ -30,11 +28,7 @@ const Button: FC<ButtonProps> = ({
 }) => {
   const buttonClassNames = cn(
     styles.button,
-    {
-      [styles.primary]: color === "primary",
-      [styles.secondary]: color === "secondary",
-      [styles.accent]: color === "accent",
-    },
+    styles[color],
     { [styles.buttonLeft]: alignIcon === "left" },
     className
   );

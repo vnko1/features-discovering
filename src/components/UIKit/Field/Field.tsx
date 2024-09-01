@@ -11,24 +11,21 @@ import cn from "classnames";
 import { InputColorType } from "@/types";
 import styles from "./Field.module.scss";
 
-type FieldProps = { color?: InputColorType } & Partial<
-  InputHTMLAttributes<HTMLInputElement>
->;
+type FieldProps = UseControllerProps<FieldValues> & {
+  color?: InputColorType;
+} & Partial<InputHTMLAttributes<HTMLInputElement>>;
 
-const Field = ({
+const Field: React.FC<FieldProps> = ({
   className,
   color = "primary",
   ...props
-}: UseControllerProps<FieldValues> & FieldProps) => {
+}) => {
   const { field, fieldState } = useController(props);
   const { error } = fieldState;
 
   const inputClassNames = cn(
     styles.field,
-    {
-      [styles.primary]: color === "primary",
-      [styles.secondary]: color === "secondary",
-    },
+    styles[color],
     { [styles.error]: error },
     className
   );
