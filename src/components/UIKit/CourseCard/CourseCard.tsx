@@ -13,6 +13,9 @@ type CourseCardProps = {
   lecturer: { name: string; description: string; photo: string };
 };
 
+const isNewCardText = "#Новий курс";
+const isMainCardText = "#ТОП";
+
 const CourseCard = ({
   title,
   isNew,
@@ -25,8 +28,8 @@ const CourseCard = ({
     <Link href={href + id} className={styles.card}>
       <h2 className={styles.title}>{title}</h2>
       <div className={styles.tags}>
-        {isNew && <p>#Новий курс</p>}
-        {isMain && <p>#ТОП</p>}
+        {isNew && <p>{isNewCardText}</p>}
+        {isMain && <p>{isMainCardText}</p>}
       </div>
       <div className={styles.lecturer}>
         <Image
