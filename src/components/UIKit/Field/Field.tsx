@@ -6,7 +6,7 @@ import {
   useController,
   UseControllerProps,
 } from "react-hook-form";
-import cn from "classnames";
+import clsx from "clsx";
 
 import { InputColorType } from "@/types";
 import styles from "./Field.module.scss";
@@ -23,7 +23,7 @@ const Field: React.FC<FieldProps> = ({
   const { field, fieldState } = useController(props);
   const { error } = fieldState;
 
-  const inputClassNames = cn(
+  const inputClassNames = clsx(
     styles.field,
     styles[color],
     { [styles.error]: error },

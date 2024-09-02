@@ -1,12 +1,12 @@
 "use client";
 
-import React, { FC, InputHTMLAttributes } from "react";
+import React, { InputHTMLAttributes } from "react";
 import {
   FieldValues,
   useController,
   UseControllerProps,
 } from "react-hook-form";
-import cn from "classnames";
+import clsx from "clsx";
 
 import { InputColorType } from "@/types";
 import styles from "./RadioButton.module.scss";
@@ -24,7 +24,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
 }) => {
   const { field } = useController(props);
 
-  const radioBtnClassNames = cn(
+  const radioBtnClassNames = clsx(
     styles.button,
     styles[color],
     className

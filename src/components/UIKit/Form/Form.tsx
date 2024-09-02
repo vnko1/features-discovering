@@ -2,7 +2,6 @@
 import React, { FC } from "react";
 import { FieldValues, Form, useForm } from "react-hook-form";
 
-import { IconsEnum } from "@/types";
 import { Field, Button, RadioButton } from "..";
 import {
   FieldsProps,
@@ -91,7 +90,7 @@ const CustomForm: FC<CustomFormProps> = ({
           radioButtonsLabel={radioButtonsLabel}
         />
       </div>
-      <Button color='accent' icon={IconsEnum.Arrow} type='submit'>
+      <Button color='accent' type='submit'>
         {buttonText}
       </Button>
     </Form>

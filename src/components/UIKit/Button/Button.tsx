@@ -1,6 +1,6 @@
 import React, { ButtonHTMLAttributes, FC } from "react";
 import Link from "next/link";
-import cn from "classnames";
+import clsx from "clsx";
 
 import styles from "./Button.module.scss";
 
@@ -22,7 +22,7 @@ const Button: FC<ButtonProps> = ({
   alignIcon = "right",
   ...props
 }) => {
-  const buttonClassNames = cn(
+  const buttonClassNames = clsx(
     styles.button,
     styles[color],
     { [styles.buttonLeft]: alignIcon === "left" },
