@@ -1,6 +1,7 @@
 "use client";
 import React, { FC } from "react";
 import { FieldValues, Form, useForm } from "react-hook-form";
+import clsx from "clsx";
 
 import { Field, Button, RadioButton } from "..";
 import {
@@ -30,9 +31,9 @@ const RadioButtons: React.FC<RadioButtonsProps> = ({
     <div className={styles.radioGroupsWrapper}>
       {radioButtonsLabel ? (
         <p
-          className={`${styles.radioGroupsLabel} ${
-            isError ? styles.error : ""
-          }`}>
+          className={clsx(styles.radioGroupsLabel, {
+            [styles.error]: isError,
+          })}>
           {radioButtonsLabel}
         </p>
       ) : null}
