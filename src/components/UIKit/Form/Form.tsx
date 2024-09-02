@@ -3,78 +3,77 @@ import React, { FC } from "react";
 import { FieldValues, Form, useForm } from "react-hook-form";
 import clsx from "clsx";
 
+import { formsData } from "@/constants";
 import { Field, Button, RadioButton } from "..";
 import {
-  FieldsProps,
   CustomFormProps,
-  RadioButtonsProps,
   FormDataTypes,
+  InputProps,
 } from "./Form.type";
 import styles from "./Form.module.scss";
 
-const Fields: React.FC<FieldsProps> = ({ control, inputFields }) => (
+const Fields: React.FC<InputProps> = ({ control, variant }) => (
   <div className={styles.fieldsWrapper}>
-    {inputFields.map((field, index) => (
+    {formsData[variant].fields.inputs.map((field, index) => (
       <Field {...field} key={index} control={control} />
     ))}
   </div>
 );
 
-const RadioButtons: React.FC<RadioButtonsProps> = ({
+const RadioButtons: React.FC<InputProps> = ({
   control,
   isError,
-  radioButtons,
-  radioButtonsLabel,
+  variant,
 }) => {
-  if (!radioButtons) return null;
+  if (!formsData[variant]?.radioButtons) return null;
   return (
     <div className={styles.radioGroupsWrapper}>
-      {radioButtonsLabel ? (
+      {
         <p
           className={clsx(styles.radioGroupsLabel, {
             [styles.error]: isError,
           })}>
-          {radioButtonsLabel}
+          {formsData[variant].labelText}
         </p>
-      ) : null}
+      }
       <div className={styles.radioButtons}>
-        {radioButtons.map((radio, index) => (
-          <RadioButton {...radio} key={index} control={control} />
-        ))}
+        {formsData[variant].radioButtons.inputs.map(
+          (radio, index) => (
+            <RadioButton
+              {...radio}
+              key={index}
+              control={control}
+              name={formsData[variant].radioButtons.name}
+            />
+          )
+        )}
       </div>
     </div>
   );
 };
 const CustomForm: FC<CustomFormProps> = ({
   className,
-  formValues,
-  buttonText,
-  inputFields,
-  radioButtons,
-  radioButtonsLabel,
   action,
-  onSubmit,
+  variant = "contactUs",
   handleSubmit,
   ...props
 }) => {
   const { control, reset, formState } = useForm<FieldValues>({
-    values: formValues,
+    values: formsData[variant].initialValues,
   });
 
   const onHandleSubmit = async (data: FormDataTypes) => {
+    console.log("🚀 ~ onHandleSubmit ~ data:", data);
     if (typeof action === "function") {
       action(data.formData);
       return reset();
     }
-
-    onSubmit && onSubmit(data);
     handleSubmit && (await handleSubmit(data.data));
     reset();
   };
 
-  const isRadioButtonsError = !!(
-    radioButtons && formState.errors[radioButtons[0]?.name]
-  );
+  const isRadioButtonsError =
+    !!formState.errors[formsData[variant]?.radioButtons.name];
 
   return (
     <Form
@@ -83,16 +82,15 @@ const CustomForm: FC<CustomFormProps> = ({
       onSubmit={onHandleSubmit}
       className={`${styles.form} ${className}`}>
       <div className={styles.inputsWrapper}>
-        <Fields control={control} inputFields={inputFields} />
+        <Fields control={control} variant={variant} />
         <RadioButtons
           control={control}
-          radioButtons={radioButtons}
           isError={isRadioButtonsError}
-          radioButtonsLabel={radioButtonsLabel}
+          variant={variant}
         />
       </div>
       <Button color='accent' type='submit'>
-        {buttonText}
+        {formsData[variant].buttonText}
       </Button>
     </Form>
   );

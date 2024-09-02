@@ -1,58 +1,53 @@
-import {
-  Control,
-  FieldValues,
-  FormProps,
-  RegisterOptions,
-} from "react-hook-form";
+import { Control, FieldValues, FormProps } from "react-hook-form";
 
-//* Type for field validation rules
-type Rule =
-  | Omit<
-      RegisterOptions<FieldValues, string>,
-      "disabled" | "valueAsNumber" | "valueAsDate" | "setValueAs"
-    >
-  | undefined;
+// type Rule =
+//   | Omit<
+//       RegisterOptions<FieldValues, string>,
+//       "disabled" | "valueAsNumber" | "valueAsDate" | "setValueAs"
+//     >
+//   | undefined;
 
-//* Types for input fields
-type Input = {
-  name: string;
-  type: React.HTMLInputTypeAttribute;
-  placeholder: string;
-  rules?: Rule;
-};
+// type Input = {
+//   name: string;
+//   type: React.HTMLInputTypeAttribute;
+//   placeholder: string;
+//   rules?: Rule;
+// };
 
-//* Types for radio buttons
-type RadioButton = {
-  name: string;
-  text: string;
-  value: string;
-  rules?: Rule;
-};
+// type RadioButton = {
+//   text: string;
+//   value: string;
+//   rules?: Rule;
+// };
 
-//* Props for the custom form component
+// export interface FormsData {
+//   contactUs: {
+//     initialValues: {
+//       name: string;
+//       email: string;
+//       phone: string;
+//       contactType: string;
+//     };
+//     labelTex: string;
+//     buttonText: string;
+//     fields: { inputs: Input[] };
+//     radioButtons: { name: string; inputs: RadioButton[] };
+//   };
+// }
+
+type FormVariant = "contactUs";
+
 export interface CustomFormProps
-  extends Partial<FormProps<FieldValues>> {
-  formValues: FieldValues;
-  inputFields: Input[];
-  radioButtons?: RadioButton[];
-  radioButtonsLabel?: string;
-  buttonText: string;
+  extends Partial<Pick<FormProps<FieldValues>, "action">> {
+  variant?: FormVariant;
   className?: string;
   handleSubmit?: (data: FieldValues) => Promise<void>;
 }
 
-interface InputProps {
+export interface InputProps {
   control: Control<FieldValues, any>;
-}
-
-export interface FieldsProps
-  extends Pick<CustomFormProps, "inputFields">,
-    InputProps {}
-
-export interface RadioButtonsProps
-  extends Pick<CustomFormProps, "radioButtons" | "radioButtonsLabel">,
-    InputProps {
-  isError: boolean;
+  variant: FormVariant;
+  isError?: boolean;
 }
 
 export interface FormDataTypes {

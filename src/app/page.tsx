@@ -4,60 +4,6 @@ import { CourseCard, Form } from "@/components";
 import styles from "./page.module.scss";
 import Menu from "./menu/Menu";
 
-const initialValues = {
-  name: "",
-  email: "",
-  phone: "",
-  contactType: "",
-};
-const fields = [
-  {
-    name: "name",
-    type: "text",
-    placeholder: "Імʼя",
-    rules: { required: true },
-  },
-  {
-    name: "email",
-    type: "text",
-    placeholder: "Пошта",
-    rules: { required: true },
-  },
-  {
-    name: "phone",
-    type: "tel",
-    placeholder: "Телефон",
-    rules: { required: true },
-  },
-];
-
-const radioFields = [
-  {
-    name: "contactType",
-    text: "Telegram",
-    value: "telegram",
-    rules: { required: true },
-  },
-  {
-    name: "contactType",
-    text: "Viber",
-    value: "viber",
-    rules: { required: true },
-  },
-  {
-    name: "contactType",
-    text: "WhatsApp",
-    value: "whatsApp",
-    rules: { required: true },
-  },
-  {
-    name: "contactType",
-    text: "Signal",
-    value: "signal",
-    rules: { required: true },
-  },
-];
-
 const defCourse = {
   title: "Основи інвестування для українців",
   isNew: true,
@@ -82,14 +28,7 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.container}>
         <div className={styles.box}></div>
-        <Form
-          className={styles.form}
-          formValues={initialValues}
-          inputFields={fields}
-          radioButtons={radioFields}
-          radioButtonsLabel='Оберіть, будь ласка, комфортний спосіб зв’язку'
-          buttonText='Надіслати заявку'
-        />
+        <Form className={styles.form} />
       </div>
       <div className={styles.courses}>
         {courses.map((course, index) => (
