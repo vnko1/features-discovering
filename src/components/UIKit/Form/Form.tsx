@@ -80,7 +80,7 @@ const CustomForm: FC<CustomFormProps> = ({
       {...props}
       control={control}
       onSubmit={onHandleSubmit}
-      className={`${styles.form} ${className}`}>
+      className={clsx(styles.form, className)}>
       <div className={styles.inputsWrapper}>
         <Fields control={control} variant={variant} />
         <RadioButtons
