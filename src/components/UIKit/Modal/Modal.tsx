@@ -30,7 +30,14 @@ const Modal: React.FC<ModalProps> = ({
   };
 
   useEffect(() => {
-    if (active) setVisible(true);
+    if (active) {
+      setVisible(true);
+      document.body.classList.add(styles.noScroll);
+    }
+
+    return () => {
+      document.body.classList.remove(styles.noScroll);
+    };
   }, [active]);
 
   useEffect(() => {
