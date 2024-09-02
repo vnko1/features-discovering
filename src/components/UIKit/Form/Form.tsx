@@ -63,7 +63,6 @@ const CustomForm: FC<CustomFormProps> = ({
   });
 
   const onHandleSubmit = async (data: FormDataTypes) => {
-    console.log("🚀 ~ onHandleSubmit ~ data:", data);
     if (typeof action === "function") {
       action(data.formData);
       return reset();
