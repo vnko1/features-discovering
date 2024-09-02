@@ -11,9 +11,15 @@ import clsx from "clsx";
 import { InputColorType } from "@/types";
 import styles from "./Field.module.scss";
 
-type FieldProps = UseControllerProps<FieldValues> & {
+interface FieldProps
+  extends UseControllerProps<FieldValues>,
+    Pick<
+      InputHTMLAttributes<HTMLInputElement>,
+      "type" | "placeholder"
+    > {
   color?: InputColorType;
-} & Partial<InputHTMLAttributes<HTMLInputElement>>;
+  className?: string;
+}
 
 const Field: React.FC<FieldProps> = ({
   className,

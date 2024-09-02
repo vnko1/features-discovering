@@ -5,13 +5,13 @@ import clsx from "clsx";
 import styles from "./Button.module.scss";
 
 type ButtonColorType = "primary" | "secondary" | "accent";
-type ButtonProps = {
-  children: React.ReactNode;
+interface ButtonProps
+  extends Partial<ButtonHTMLAttributes<HTMLButtonElement>> {
   href?: string;
   color?: ButtonColorType;
   icon?: React.JSX.Element;
   alignIcon?: "left" | "right";
-} & Partial<ButtonHTMLAttributes<HTMLButtonElement>>;
+}
 
 const Button: FC<ButtonProps> = ({
   children,

@@ -11,15 +11,18 @@ import clsx from "clsx";
 import { InputColorType } from "@/types";
 import styles from "./RadioButton.module.scss";
 
-type RadioButtonProps = UseControllerProps<FieldValues> & {
-  label: string;
+interface RadioButtonProps
+  extends UseControllerProps<FieldValues>,
+    Pick<InputHTMLAttributes<HTMLInputElement>, "value"> {
+  text: string;
   color?: InputColorType;
-} & Omit<InputHTMLAttributes<HTMLInputElement>, "type">;
+  className?: string;
+}
 
 const RadioButton: React.FC<RadioButtonProps> = ({
   color = "primary",
   className,
-  label,
+  text,
   ...props
 }) => {
   const { field } = useController(props);
@@ -38,7 +41,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
         checked={props.value === field.value}
         className={styles.field}
       />
-      <span className={radioBtnClassNames}>{label}</span>
+      <span className={radioBtnClassNames}>{text}</span>
     </label>
   );
 };

@@ -5,13 +5,13 @@ import clsx from "clsx";
 
 import styles from "./Modal.module.scss";
 
-type ModalProps = {
+interface ModalProps {
   children: React.ReactNode;
   active: boolean;
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
   timeoutDelay?: number;
   className?: string;
-};
+}
 
 const Modal: React.FC<ModalProps> = ({
   children,

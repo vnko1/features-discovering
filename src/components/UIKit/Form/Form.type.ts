@@ -13,7 +13,7 @@ type Rule =
     >
   | undefined;
 
-//* Type for input fields
+//* Types for input fields
 type Input = {
   name: string;
   type: React.HTMLInputTypeAttribute;
@@ -21,16 +21,17 @@ type Input = {
   rules?: Rule;
 };
 
-//* Type for radio buttons
+//* Types for radio buttons
 type RadioButton = {
   name: string;
-  label: string;
+  text: string;
   value: string;
   rules?: Rule;
 };
 
 //* Props for the custom form component
-export type CustomFormProps = {
+export interface CustomFormProps
+  extends Partial<FormProps<FieldValues>> {
   formValues: FieldValues;
   inputFields: Input[];
   radioButtons?: RadioButton[];
@@ -38,22 +39,26 @@ export type CustomFormProps = {
   buttonText: string;
   className?: string;
   handleSubmit?: (data: FieldValues) => Promise<void>;
-} & Partial<FormProps<FieldValues>>;
+}
 
-type InputProps = { control: Control<FieldValues, any> };
+interface InputProps {
+  control: Control<FieldValues, any>;
+}
 
-export type FieldsProps = Pick<CustomFormProps, "inputFields"> &
-  InputProps;
+export interface FieldsProps
+  extends Pick<CustomFormProps, "inputFields">,
+    InputProps {}
 
-export type RadioButtonsProps = {
+export interface RadioButtonsProps
+  extends Pick<CustomFormProps, "radioButtons" | "radioButtonsLabel">,
+    InputProps {
   isError: boolean;
-} & Pick<CustomFormProps, "radioButtons" | "radioButtonsLabel"> &
-  InputProps;
+}
 
-export type FormDataTypes = {
+export interface FormDataTypes {
   data: FieldValues;
   event?: React.BaseSyntheticEvent;
   formData: FormData;
   formDataJson: string;
   method?: "post" | "put" | "delete";
-};
+}

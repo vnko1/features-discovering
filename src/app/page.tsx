@@ -34,25 +34,25 @@ const fields = [
 const radioFields = [
   {
     name: "contactType",
-    label: "Telegram",
+    text: "Telegram",
     value: "telegram",
     rules: { required: true },
   },
   {
     name: "contactType",
-    label: "Viber",
+    text: "Viber",
     value: "viber",
     rules: { required: true },
   },
   {
     name: "contactType",
-    label: "WhatsApp",
+    text: "WhatsApp",
     value: "whatsApp",
     rules: { required: true },
   },
   {
     name: "contactType",
-    label: "Signal",
+    text: "Signal",
     value: "signal",
     rules: { required: true },
   },
