@@ -1,0 +1,50 @@
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+  width: 100vw;
+
+  opacity: 0;
+  z-index: 50;
+  visibility: hidden;
+  transition: all 0.3s;
+
+  background-color: #57565699;
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.3s;
+  text-align: center;
+
+  width: 350px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.closeBtn {
+  background: transparent;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: 0;
+  cursor: pointer;
+}
+
+.noScroll {
+  overflow: hidden;
+}

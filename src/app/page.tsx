@@ -2,6 +2,7 @@
 import { CourseCard, Form } from "@/components";
 
 import styles from "./page.module.scss";
+import Menu from "./menu/Menu";
 
 const initialValues = {
   name: "",
@@ -95,6 +96,7 @@ export default function Home() {
           <CourseCard key={index} {...course} id={index} href='/' />
         ))}
       </div>
+      <Menu />
     </main>
   );
 }
