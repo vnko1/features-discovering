@@ -12,10 +12,9 @@ interface CourseCardProps {
   isNew: boolean;
   isMain: boolean;
   lecturer: Lecturer;
+  newCardText?: string;
+  mainCardText?: string;
 }
-
-const newCardText = "#Новий курс";
-const mainCardText = "#ТОП";
 
 const CourseCard = ({
   title,
@@ -24,6 +23,8 @@ const CourseCard = ({
   lecturer,
   href,
   id,
+  newCardText = "#Новий курс",
+  mainCardText = "#ТОП",
 }: CourseCardProps) => {
   return (
     <Link href={href + id} className={styles.card}>
