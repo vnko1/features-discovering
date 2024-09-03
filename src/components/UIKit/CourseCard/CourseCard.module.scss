@@ -12,7 +12,7 @@
   transition: all var(--transition-duration) ease-in-out;
 
   @media screen and (max-width: 1280px) {
-    padding: 53px 50px;
+    padding: 52px 50px;
   }
 
   @media screen and (max-width: 833px) {
@@ -60,7 +60,7 @@
 }
 
 .title {
-  max-width: 411px;
+  max-width: 78%;
   margin-bottom: 20px;
 
   font-weight: 400;
@@ -72,6 +72,7 @@
   transition: all var(--transition-duration) ease-in-out;
 
   @media screen and (max-width: 1280px) {
+    max-width: 52%;
     margin-bottom: 30px;
 
     line-height: 3.438rem;
@@ -79,7 +80,6 @@
   }
 
   @media screen and (max-width: 833px) {
-    max-width: 212px;
     margin-bottom: 20px;
 
     font-size: 1.875rem;
