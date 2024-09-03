@@ -4,13 +4,14 @@ import Link from "next/link";
 
 import styles from "./CourseCard.module.scss";
 
+type Lecturer = { name: string; description: string; photo: string };
 interface CourseCardProps {
   href: string;
   id: number | string;
   title: string;
   isNew: boolean;
   isMain: boolean;
-  lecturer: { name: string; description: string; photo: string };
+  lecturer: Lecturer;
 }
 
 const newCardText = "#Новий курс";
