@@ -13,8 +13,8 @@ interface CourseCardProps {
   lecturer: { name: string; description: string; photo: string };
 }
 
-const isNewCardText = "#Новий курс";
-const isMainCardText = "#ТОП";
+const newCardText = "#Новий курс";
+const mainCardText = "#ТОП";
 
 const CourseCard = ({
   title,
@@ -28,8 +28,8 @@ const CourseCard = ({
     <Link href={href + id} className={styles.card}>
       <h2 className={styles.title}>{title}</h2>
       <div className={styles.tags}>
-        {isNew && <p>{isNewCardText}</p>}
-        {isMain && <p>{isMainCardText}</p>}
+        {isNew && <p>{newCardText}</p>}
+        {isMain && <p>{mainCardText}</p>}
       </div>
       <div className={styles.lecturer}>
         <Image
@@ -39,7 +39,7 @@ const CourseCard = ({
           height={94}
           className={styles.lecturerPhoto}
         />
-        <div className={styles.lecturerTextWrapper}>
+        <div className={styles.lecturerMeta}>
           <p className={styles.lecturerName}>{lecturer.name}</p>
           <p className={styles.lecturerDescription}>
             {lecturer.description}
