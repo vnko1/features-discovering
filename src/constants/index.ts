@@ -1,60 +1,66 @@
-export const formsData = {
+const initialValues = {
   contactUs: {
-    initialValues: {
-      name: "",
-      email: "",
-      phone: "",
-      contactType: "",
-    },
-    labelText: "Оберіть, будь ласка, комфортний спосіб зв’язку",
-    buttonText: "Надіслати заявку",
-    fields: {
-      inputs: [
-        {
-          name: "name",
-          type: "text",
-          placeholder: "Імʼя",
-          rules: { required: true },
-        },
-        {
-          name: "email",
-          type: "text",
-          placeholder: "Пошта",
-          rules: { required: true },
-        },
-        {
-          name: "phone",
-          type: "tel",
-          placeholder: "Телефон",
-          rules: { required: true },
-        },
-      ],
-    },
-    radioButtons: {
-      name: "contactType",
-      inputs: [
-        {
-          text: "Telegram",
-          value: "telegram",
-          rules: { required: true },
-        },
-        {
-          text: "Viber",
-          value: "viber",
-          rules: { required: true },
-        },
-        {
-          text: "WhatsApp",
-          value: "whatsApp",
-          rules: { required: true },
-        },
-        {
-          name: "contactType",
-          text: "Signal",
-          value: "signal",
-          rules: { required: true },
-        },
-      ],
-    },
+    name: "",
+    email: "",
+    phone: "",
+    contactType: "",
   },
+};
+const buttonText = {
+  contactUs: "Надіслати заявку",
+};
+
+const textFields = {
+  contactUs: [
+    {
+      name: "name",
+      type: "text",
+      placeholder: "Імʼя",
+      rules: { required: true },
+    },
+    {
+      name: "email",
+      type: "text",
+      placeholder: "Пошта",
+      rules: { required: true },
+    },
+    {
+      name: "phone",
+      type: "tel",
+      placeholder: "Телефон",
+      rules: { required: true },
+    },
+  ],
+};
+const radioButtons = {
+  contactUs: {
+    labelText: "Оберіть, будь ласка, комфортний спосіб зв’язку",
+    name: "contactType",
+    rules: { required: true },
+    inputs: [
+      {
+        text: "Telegram",
+        value: "telegram",
+      },
+      {
+        text: "Viber",
+        value: "viber",
+      },
+      {
+        text: "WhatsApp",
+        value: "whatsApp",
+      },
+      {
+        name: "contactType",
+        text: "Signal",
+      },
+    ],
+  },
+};
+
+export const formsVariant = {
+  radioButtons,
+  textFields,
+  buttonText,
+  initialValues,
 };
