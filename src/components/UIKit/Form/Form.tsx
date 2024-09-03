@@ -8,49 +8,46 @@ import { Field, Button, RadioButton } from "..";
 import {
   CustomFormProps,
   FormDataTypes,
-  InputProps,
+  RadioButtonsProps,
+  TextFieldsProps,
 } from "./Form.type";
 import styles from "./Form.module.scss";
 
 const { initialValues, buttonText, textFields, radioButtons } =
   formsVariant;
 
-const Fields: React.FC<InputProps> = ({ control, variant }) => (
+const TextFields: React.FC<TextFieldsProps> = ({
+  inputs,
+  ...props
+}) => (
   <div className={styles.fieldsWrapper}>
-    {textFields[variant].map((field, index) => (
-      <Field key={index} {...field} control={control} />
+    {inputs.map((field, index) => (
+      <Field key={index} {...props} {...field} />
     ))}
   </div>
 );
 
-const RadioButtons: React.FC<InputProps> = ({
-  control,
+const RadioButtons: React.FC<RadioButtonsProps> = ({
   isError,
-  variant,
+  inputs,
+  labelText,
+  ...props
 }) => {
-  const data = radioButtons[variant];
-
-  if (!data?.inputs) return null;
+  if (!inputs) return null;
 
   return (
     <div className={styles.radioGroupsWrapper}>
-      {data?.labelText ? (
+      {labelText ? (
         <p
           className={clsx(styles.radioGroupsLabel, {
             [styles.error]: isError,
           })}>
-          {data.labelText}
+          {labelText}
         </p>
       ) : null}
       <div className={styles.radioButtons}>
-        {data.inputs.map((radio, index) => (
-          <RadioButton
-            key={index}
-            {...radio}
-            control={control}
-            name={data.name}
-            rules={data.rules}
-          />
+        {inputs.map((radio, index) => (
+          <RadioButton key={index} {...props} {...radio} />
         ))}
       </div>
     </div>
@@ -74,7 +71,7 @@ const CustomForm: FC<CustomFormProps> = ({
   };
 
   const isRadioButtonsError =
-    !!formState.errors[radioButtons[variant]?.name];
+    !!formState.errors[radioButtons[variant]?.name || ""];
 
   return (
     <Form
@@ -83,11 +80,14 @@ const CustomForm: FC<CustomFormProps> = ({
       onSubmit={onHandleSubmit}
       className={clsx(styles.form, className)}>
       <div className={styles.inputsWrapper}>
-        <Fields control={control} variant={variant} />
+        <TextFields control={control} inputs={textFields[variant]} />
         <RadioButtons
           control={control}
           isError={isRadioButtonsError}
-          variant={variant}
+          rules={radioButtons[variant].rules}
+          name={radioButtons[variant].name || ""}
+          labelText={radioButtons[variant].labelText}
+          inputs={radioButtons[variant].inputs}
         />
       </div>
       <Button color='accent' type='submit'>

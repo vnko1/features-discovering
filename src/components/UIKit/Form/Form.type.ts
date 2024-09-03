@@ -1,19 +1,11 @@
-import { Control, FieldValues, FormProps } from "react-hook-form";
+import {
+  Control,
+  FieldValues,
+  FormProps,
+  RegisterOptions,
+} from "react-hook-form";
 
-type FormVariant = "contactUs";
-
-export interface CustomFormProps
-  extends Partial<Pick<FormProps<FieldValues>, "action">> {
-  variant?: FormVariant;
-  className?: string;
-  handleSubmit?: (data: FieldValues) => Promise<void>;
-}
-
-export interface InputProps {
-  control: Control<FieldValues, any>;
-  variant: FormVariant;
-  isError?: boolean;
-}
+type Controller = Control<FieldValues, any>;
 
 export interface FormDataTypes {
   data: FieldValues;
@@ -23,37 +15,44 @@ export interface FormDataTypes {
   method?: "post" | "put" | "delete";
 }
 
-// type Rule =
-//   | Omit<
-//       RegisterOptions<FieldValues, string>,
-//       "disabled" | "valueAsNumber" | "valueAsDate" | "setValueAs"
-//     >
-//   | undefined;
+type Rule =
+  | Omit<
+      RegisterOptions<FieldValues, string>,
+      "disabled" | "valueAsNumber" | "valueAsDate" | "setValueAs"
+    >
+  | undefined;
 
-// type Input = {
-//   name: string;
-//   type: React.HTMLInputTypeAttribute;
-//   placeholder: string;
-//   rules?: Rule;
-// };
+type TextFIeld = {
+  name: string;
+  type: React.HTMLInputTypeAttribute;
+  placeholder: string;
+  rules?: Rule;
+};
 
-// type RadioButton = {
-//   text: string;
-//   value: string;
-//   rules?: Rule;
-// };
+export interface TextFieldsProps {
+  control: Controller;
+  inputs: TextFIeld[];
+}
 
-// export interface FormsData {
-//   contactUs: {
-//     initialValues: {
-//       name: string;
-//       email: string;
-//       phone: string;
-//       contactType: string;
-//     };
-//     labelTex: string;
-//     buttonText: string;
-//     fields: { inputs: Input[] };
-//     radioButtons: { name: string; inputs: RadioButton[] };
-//   };
-// }
+type RadioButton = {
+  text: string;
+  value: string;
+};
+
+export interface RadioButtonsProps {
+  control: Controller;
+  name: string;
+  isError?: boolean;
+  labelText?: string | null;
+  inputs?: RadioButton[];
+  rules?: Rule;
+}
+
+type FormVariant = "contactUs";
+
+export interface CustomFormProps
+  extends Partial<Pick<FormProps<FieldValues>, "action">> {
+  variant?: FormVariant;
+  className?: string;
+  handleSubmit?: (data: FieldValues) => Promise<void>;
+}

@@ -51,8 +51,8 @@ const radioButtons = {
         value: "whatsApp",
       },
       {
-        name: "contactType",
         text: "Signal",
+        value: "signal",
       },
     ],
   },
