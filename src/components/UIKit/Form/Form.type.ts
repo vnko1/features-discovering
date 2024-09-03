@@ -1,5 +1,28 @@
 import { Control, FieldValues, FormProps } from "react-hook-form";
 
+type FormVariant = "contactUs";
+
+export interface CustomFormProps
+  extends Partial<Pick<FormProps<FieldValues>, "action">> {
+  variant?: FormVariant;
+  className?: string;
+  handleSubmit?: (data: FieldValues) => Promise<void>;
+}
+
+export interface InputProps {
+  control: Control<FieldValues, any>;
+  variant: FormVariant;
+  isError?: boolean;
+}
+
+export interface FormDataTypes {
+  data: FieldValues;
+  event?: React.BaseSyntheticEvent;
+  formData: FormData;
+  formDataJson: string;
+  method?: "post" | "put" | "delete";
+}
+
 // type Rule =
 //   | Omit<
 //       RegisterOptions<FieldValues, string>,
@@ -34,26 +57,3 @@ import { Control, FieldValues, FormProps } from "react-hook-form";
 //     radioButtons: { name: string; inputs: RadioButton[] };
 //   };
 // }
-
-type FormVariant = "contactUs";
-
-export interface CustomFormProps
-  extends Partial<Pick<FormProps<FieldValues>, "action">> {
-  variant?: FormVariant;
-  className?: string;
-  handleSubmit?: (data: FieldValues) => Promise<void>;
-}
-
-export interface InputProps {
-  control: Control<FieldValues, any>;
-  variant: FormVariant;
-  isError?: boolean;
-}
-
-export interface FormDataTypes {
-  data: FieldValues;
-  event?: React.BaseSyntheticEvent;
-  formData: FormData;
-  formDataJson: string;
-  method?: "post" | "put" | "delete";
-}
