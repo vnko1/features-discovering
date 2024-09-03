@@ -18,7 +18,7 @@ const { initialValues, buttonText, textFields, radioButtons } =
 const Fields: React.FC<InputProps> = ({ control, variant }) => (
   <div className={styles.fieldsWrapper}>
     {textFields[variant].map((field, index) => (
-      <Field {...field} key={index} control={control} />
+      <Field key={index} {...field} control={control} />
     ))}
   </div>
 );
@@ -45,8 +45,8 @@ const RadioButtons: React.FC<InputProps> = ({
       <div className={styles.radioButtons}>
         {data.inputs.map((radio, index) => (
           <RadioButton
-            {...radio}
             key={index}
+            {...radio}
             control={control}
             name={data.name}
             rules={data.rules}
@@ -68,11 +68,8 @@ const CustomForm: FC<CustomFormProps> = ({
   });
 
   const onHandleSubmit = async (data: FormDataTypes) => {
-    if (typeof action === "function") {
-      action(data.formData);
-      return reset();
-    }
-    handleSubmit && (await handleSubmit(data.data));
+    if (typeof action === "function") action(data.formData);
+    else if (handleSubmit) await handleSubmit(data);
     reset();
   };
 
