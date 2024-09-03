@@ -14,7 +14,7 @@ import styles from "./RadioButton.module.scss";
 interface RadioButtonProps
   extends UseControllerProps<FieldValues>,
     Pick<InputHTMLAttributes<HTMLInputElement>, "value"> {
-  text: string;
+  label: string;
   color?: InputColorType;
   className?: string;
 }
@@ -22,7 +22,7 @@ interface RadioButtonProps
 const RadioButton: React.FC<RadioButtonProps> = ({
   color = "primary",
   className,
-  text,
+  label,
   ...props
 }) => {
   const { field } = useController(props);
@@ -41,7 +41,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
         checked={props.value === field.value}
         className={styles.field}
       />
-      <span className={radioBtnClassNames}>{text}</span>
+      <span className={radioBtnClassNames}>{label}</span>
     </label>
   );
 };

@@ -29,7 +29,7 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.container}>
         <div className={styles.box}></div>
-        {/* <Form className={styles.form} /> */}
+        <Form className={styles.form} />
       </div>
       <div className={styles.courses}>
         {courses.map((course, index) => (
@@ -38,7 +38,7 @@ export default function Home() {
       </div>
       <Menu />
 
-      <ArrayForm />
+      {/* <ArrayForm /> */}
     </main>
   );
 }

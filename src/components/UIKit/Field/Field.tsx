@@ -38,7 +38,12 @@ const Field: React.FC<FieldProps> = ({
 
   return (
     <label className={styles.label}>
-      <input {...field} {...props} className={inputClassNames} />
+      <input
+        {...field}
+        {...props}
+        value={field.value || ""}
+        className={inputClassNames}
+      />
     </label>
   );
 };

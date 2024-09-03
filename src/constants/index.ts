@@ -39,26 +39,26 @@ const radioButtons = {
     rules: { required: true },
     inputs: [
       {
-        text: "Telegram",
+        label: "Telegram",
         value: "telegram",
       },
       {
-        text: "Viber",
+        label: "Viber",
         value: "viber",
       },
       {
-        text: "WhatsApp",
+        label: "WhatsApp",
         value: "whatsApp",
       },
       {
-        text: "Signal",
+        label: "Signal",
         value: "signal",
       },
     ],
   },
 };
 
-export const formsVariant = {
+export const forms = {
   radioButtons,
   textFields,
   buttonText,

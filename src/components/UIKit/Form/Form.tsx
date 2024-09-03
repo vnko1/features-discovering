@@ -1,20 +1,19 @@
 "use client";
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { FieldValues, Form, useForm } from "react-hook-form";
 import clsx from "clsx";
 
-import { formsVariant } from "@/constants";
+import { forms } from "@/constants";
 import { Field, Button, RadioButton } from "..";
 import {
   CustomFormProps,
-  FormDataTypes,
+  SubmitDataTypes,
   RadioButtonsProps,
   TextFieldsProps,
 } from "./Form.type";
 import styles from "./Form.module.scss";
 
-const { initialValues, buttonText, textFields, radioButtons } =
-  formsVariant;
+const { initialValues, buttonText, textFields, radioButtons } = forms;
 
 const TextFields: React.FC<TextFieldsProps> = ({
   inputs,
@@ -53,6 +52,7 @@ const RadioButtons: React.FC<RadioButtonsProps> = ({
     </div>
   );
 };
+
 const CustomForm: FC<CustomFormProps> = ({
   className,
   action,
@@ -60,18 +60,45 @@ const CustomForm: FC<CustomFormProps> = ({
   handleSubmit,
   ...props
 }) => {
-  const { control, reset, formState } = useForm<FieldValues>({
-    values: initialValues[variant],
+  const [initialValue, setInitialValue] = useState(
+    initialValues[variant]
+  );
+  const [inputs, setInputs] = useState(textFields[variant]);
+
+  const { control, reset, formState, watch } = useForm<FieldValues>({
+    defaultValues: initialValue,
   });
 
-  const onHandleSubmit = async (data: FormDataTypes) => {
-    if (typeof action === "function") action(data.formData);
-    else if (handleSubmit) await handleSubmit(data);
-    reset();
-  };
-
+  const contact = watch("contactType");
   const isRadioButtonsError =
     !!formState.errors[radioButtons[variant]?.name || ""];
+
+  const onHandleSubmit = async (data: SubmitDataTypes) => {
+    try {
+      if (typeof action === "function") action(data.formData);
+      else if (handleSubmit) await handleSubmit(data);
+      reset();
+      setInitialValue(initialValues[variant]);
+      setInputs(textFields[variant]);
+    } catch (error) {
+      error;
+    }
+  };
+
+  useEffect(() => {
+    if (contact === "telegram") {
+      setInitialValue((state) => ({ ...state, nick: "" }));
+      setInputs((state) => [
+        ...state,
+        {
+          name: "nick",
+          type: "text",
+          placeholder: "Нік",
+          rules: { required: true },
+        },
+      ]);
+    }
+  }, [contact, variant]);
 
   return (
     <Form
@@ -80,7 +107,7 @@ const CustomForm: FC<CustomFormProps> = ({
       onSubmit={onHandleSubmit}
       className={clsx(styles.form, className)}>
       <div className={styles.inputsWrapper}>
-        <TextFields control={control} inputs={textFields[variant]} />
+        <TextFields control={control} inputs={inputs} />
         <RadioButtons
           control={control}
           isError={isRadioButtonsError}
