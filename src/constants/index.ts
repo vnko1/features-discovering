@@ -58,7 +58,7 @@ const radioButtons = {
   },
 };
 
-export const forms = {
+export const data = {
   radioButtons,
   textFields,
   buttonText,

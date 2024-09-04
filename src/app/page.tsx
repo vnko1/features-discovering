@@ -29,7 +29,16 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.container}>
         <div className={styles.box}></div>
-        <Form className={styles.form} />
+        <Form
+          className={styles.form}
+          displayOptionalField='telegram'
+          optionalField={{
+            name: "nick",
+            type: "text",
+            placeholder: "Нік",
+            rules: { required: true },
+          }}
+        />
       </div>
       <div className={styles.courses}>
         {courses.map((course, index) => (

@@ -3,17 +3,18 @@ import React, { FC, useEffect, useState } from "react";
 import { FieldValues, Form, useForm } from "react-hook-form";
 import clsx from "clsx";
 
-import { forms } from "@/constants";
+import { data } from "@/constants";
 import { Field, Button, RadioButton } from "..";
 import {
   CustomFormProps,
   SubmitDataTypes,
   RadioButtonsProps,
   TextFieldsProps,
+  TextFIeld,
 } from "./Form.type";
 import styles from "./Form.module.scss";
 
-const { initialValues, buttonText, textFields, radioButtons } = forms;
+const { initialValues, buttonText, textFields, radioButtons } = data;
 
 const TextFields: React.FC<TextFieldsProps> = ({
   inputs,
@@ -56,49 +57,57 @@ const RadioButtons: React.FC<RadioButtonsProps> = ({
 const CustomForm: FC<CustomFormProps> = ({
   className,
   action,
-  variant = "contactUs",
   handleSubmit,
+  optionalField,
+  displayOptionalField,
+  variant = "contactUs",
+  fieldToWatch = "contactType",
   ...props
 }) => {
   const [initialValue, setInitialValue] = useState(
     initialValues[variant]
   );
-  const [inputs, setInputs] = useState(textFields[variant]);
+  const [inputs, setInputs] = useState<Array<TextFIeld>>(
+    textFields[variant]
+  );
 
-  const { control, reset, formState, watch } = useForm<FieldValues>({
-    defaultValues: initialValue,
-  });
+  const { control, reset, formState, watch, unregister } =
+    useForm<FieldValues>({
+      defaultValues: initialValue,
+    });
 
-  const contact = watch("contactType");
+  const field = watch(fieldToWatch);
   const isRadioButtonsError =
     !!formState.errors[radioButtons[variant]?.name || ""];
+
+  const resetDynamicFieldState = () => {
+    if (!optionalField) return;
+    setInitialValue(initialValues[variant]);
+    setInputs(textFields[variant]);
+    unregister(optionalField.name);
+  };
 
   const onHandleSubmit = async (data: SubmitDataTypes) => {
     try {
       if (typeof action === "function") action(data.formData);
       else if (handleSubmit) await handleSubmit(data);
+      resetDynamicFieldState();
       reset();
-      setInitialValue(initialValues[variant]);
-      setInputs(textFields[variant]);
     } catch (error) {
       error;
     }
   };
 
   useEffect(() => {
-    if (contact === "telegram") {
-      setInitialValue((state) => ({ ...state, nick: "" }));
-      setInputs((state) => [
+    if (optionalField && field === displayOptionalField) {
+      setInitialValue((state) => ({
         ...state,
-        {
-          name: "nick",
-          type: "text",
-          placeholder: "Нік",
-          rules: { required: true },
-        },
-      ]);
-    }
-  }, [contact, variant]);
+        [optionalField.name]: "",
+      }));
+      setInputs((state) => [...state, optionalField]);
+    } else resetDynamicFieldState();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [field, variant]);
 
   return (
     <Form

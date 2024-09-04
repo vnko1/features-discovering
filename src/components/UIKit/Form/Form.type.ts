@@ -13,7 +13,8 @@ type Rule =
       "disabled" | "valueAsNumber" | "valueAsDate" | "setValueAs"
     >
   | undefined;
-type TextFIeld = {
+
+export type TextFIeld = {
   name: string;
   type: React.HTMLInputTypeAttribute;
   placeholder: string;
@@ -42,6 +43,9 @@ export interface CustomFormProps
   extends Partial<Pick<FormProps<FieldValues>, "action">> {
   variant?: FormVariant;
   className?: string;
+  optionalField?: TextFIeld;
+  displayOptionalField?: string;
+  fieldToWatch?: string;
   handleSubmit?: (data: FieldValues) => Promise<void>;
 }
 
