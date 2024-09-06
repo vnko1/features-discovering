@@ -19,14 +19,17 @@ export function useEditSearchParams(
     const formattedValue = Array.isArray(value)
       ? value.join(separator)
       : value;
+
     const config = href
       ? {
           [name]: formattedValue.trim(),
         }
       : searchParams;
+
     const params = new URLSearchParams(config);
 
     if (href) return router.push(href + "?" + params.toString());
+
     name
       ? params.set(name, formattedValue.trim())
       : params.delete(name);

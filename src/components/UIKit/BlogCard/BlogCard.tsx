@@ -60,8 +60,8 @@ const BlogCard: React.FC<BlogCardProps> = ({
         <h2 className={styles.title}>{title}</h2>
         {tagsArr ? (
           <div className={styles.categories}>
-            {tagsArr.map((category, index) => (
-              <Tag key={index} tag={category} />
+            {tagsArr.map((tag, index) => (
+              <Tag key={index} tag={tag} />
             ))}
           </div>
         ) : null}
