@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import React from "react";
 import Link from "next/link";
 import { useEditSearchParam } from "./useEditSearchParam";
@@ -11,32 +11,51 @@ interface TagLinkProps {
 }
 const searchParamName = "categories";
 
+function setSearchParams(
+  data: { [x: string]: string | string[] },
+  separator = ","
+) {
+  const searchParams = new URLSearchParams();
+
+  Object.keys(data).forEach((name) => {
+    if (Array.isArray(data[name]))
+      searchParams.set(name, data[name].join(separator));
+    else searchParams.set(name, data[name]);
+  });
+
+  return searchParams.toString();
+}
+
 const Category: React.FC<TagLinkProps> = ({
   className,
   category,
 }) => {
-  // const searchParams = new URLSearchParams({
-  //   categories: category,
-  // });
-  // return (
-  //   <Link
-  //     href={"/blog" + "?" + searchParams.toString()}
-  //     className={`${styles.category} ${className}`}>
-  //     {category}
-  //   </Link>
-  // );
-  const onCategoryClick = useEditSearchParam(
-    searchParamName,
-    category,
-    "/blog"
-  );
   return (
-    <button
-      className={`${styles.category} ${className}`}
-      onClick={onCategoryClick}>
+    <Link
+      href={
+        "/blog" +
+        "?" +
+        setSearchParams({
+          categories: category,
+          query: ["qwerty", "search"],
+        })
+      }
+      className={`${styles.category} ${className}`}>
       {category}
-    </button>
+    </Link>
   );
+  // const onCategoryClick = useEditSearchParam(
+  //   searchParamName,
+  //   category,
+  //   "/blog"
+  // );
+  // return (
+  //   <button
+  //     className={`${styles.category} ${className}`}
+  //     onClick={onCategoryClick}>
+  //     {category}
+  //   </button>
+  // );
 };
 
 export default Category;
