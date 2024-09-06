@@ -1,9 +1,10 @@
 // "use client";
 import React from "react";
 import Link from "next/link";
-import { useEditSearchParam } from "./useEditSearchParam";
 
-import styles from "./Category.module.scss";
+import { useEditSearchParams } from "../Tag/useSetSearchParams";
+
+import styles from "./Tag.module.scss";
 
 interface TagLinkProps {
   category: string;

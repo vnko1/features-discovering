@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { BlogInterface } from "@/types/interfaces/blog.interface";
 
-import Category from "./components/Category/Category";
+import Tag from "./components/Tag/Tag";
 import styles from "./BlogCard.module.scss";
 
 function formatDate(date: Date) {
@@ -61,7 +61,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
         {tagsArr ? (
           <div className={styles.categories}>
             {tagsArr.map((category, index) => (
-              <Category key={index} category={category} />
+              <Tag key={index} tag={category} />
             ))}
           </div>
         ) : null}
