@@ -1,6 +1,10 @@
 "use client";
 import React from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import {
+  usePathname,
+  useRouter,
+  useSearchParams,
+} from "next/navigation";
 import styles from "./Category.module.scss";
 
 interface TagLinkProps {
@@ -9,7 +13,10 @@ interface TagLinkProps {
 }
 const searchParamName = "categories";
 
-const Category: React.FC<TagLinkProps> = ({ className, category }) => {
+const Category: React.FC<TagLinkProps> = ({
+  className,
+  category,
+}) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -24,7 +31,9 @@ const Category: React.FC<TagLinkProps> = ({ className, category }) => {
   };
 
   return (
-    <button className={`${styles.tag} ${className}`} onClick={onTagClick}>
+    <button
+      className={`${styles.category} ${className}`}
+      onClick={onTagClick}>
       {category}
     </button>
   );
