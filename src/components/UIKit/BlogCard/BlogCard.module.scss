@@ -24,9 +24,9 @@
 
   overflow: hidden;
 
-  @include lg {
-    aspect-ratio: 3/2;
-  }
+  // @include lg {
+  //   aspect-ratio: 3/2;
+  // }
 
   @include sm {
     aspect-ratio: 1/1;

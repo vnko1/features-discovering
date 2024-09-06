@@ -68,38 +68,38 @@ const BlogCard: React.FC<BlogCardProps> = ({
       </div>
     </div>
   );
-  return (
-    <Link href={href + id} className={`${styles.card} ${className}`}>
-      <div className={styles.thumb}>
-        <Image
-          src={mainBanner}
-          alt={title}
-          fill
-          sizes='(max-width: 768px) 75vw, (max-width: 1280px) 88vw, 33vw'
-          style={{ objectFit: "cover", objectPosition: "center" }}
-        />
-      </div>
-      <div className={styles.content}>
-        <div className={styles.meta}>
-          {formattedDate && (
-            <>
-              <p>{formattedDate}</p>
-              <span>|</span>
-            </>
-          )}
-          <p>{readTimeValue}</p>
-        </div>
-        <h2 className={styles.title}>{title}</h2>
-        {tagsArr ? (
-          <div className={styles.tags}>
-            {tagsArr.map((category, index) => (
-              <Category key={index} category={category} />
-            ))}
-          </div>
-        ) : null}
-      </div>
-    </Link>
-  );
+  // return (
+  //   <Link href={href + id} className={`${styles.card} ${className}`}>
+  //     <div className={styles.thumb}>
+  //       <Image
+  //         src={mainBanner}
+  //         alt={title}
+  //         fill
+  //         sizes='(max-width: 768px) 75vw, (max-width: 1280px) 88vw, 33vw'
+  //         style={{ objectFit: "cover", objectPosition: "center" }}
+  //       />
+  //     </div>
+  //     <div className={styles.content}>
+  //       <div className={styles.meta}>
+  //         {formattedDate && (
+  //           <>
+  //             <p>{formattedDate}</p>
+  //             <span>|</span>
+  //           </>
+  //         )}
+  //         <p>{readTimeValue}</p>
+  //       </div>
+  //       <h2 className={styles.title}>{title}</h2>
+  //       {tagsArr ? (
+  //         <div className={styles.tags}>
+  //           {tagsArr.map((category, index) => (
+  //             <Category key={index} category={category} />
+  //           ))}
+  //         </div>
+  //       ) : null}
+  //     </div>
+  //   </Link>
+  // );
 };
 
 export default BlogCard;

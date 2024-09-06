@@ -1,11 +1,5 @@
-@mixin animation(
-  $duration: var(--transition-duration),
-  $property: ease-in-out,
-  $type: all
-) {
-  transition: $type $duration $property;
-}
-
+@use "/src/styles/utils/breakpoints" as *;
+@use "/src/styles/utils/mixins" as *;
 $tr-duration: 0.4s;
 
 .card {
