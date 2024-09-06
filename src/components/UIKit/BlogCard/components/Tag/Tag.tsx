@@ -44,7 +44,7 @@ const Category: React.FC<TagLinkProps> = ({ className, tag }) => {
   const onCategoryClick = useEditSearchParams(searchParamName, tag);
   return (
     <button
-      className={`${styles.category} ${className}`}
+      className={`${styles.tag} ${className}`}
       onClick={onCategoryClick}>
       {tag}
     </button>
