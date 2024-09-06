@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 
-import { useEditSearchParams } from "../Tag/useSetSearchParams";
+import { useEditSearchParams } from "../Tag/useEditSearchParams";
 
 import styles from "./Tag.module.scss";
 
