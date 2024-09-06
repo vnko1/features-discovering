@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { useEditSearchParams } from "./useEditSearchParams";
 
-import styles from "./Category.module.scss";
+import styles from "./Tag.module.scss";
 
 interface TagLinkProps {
   tag: string;
