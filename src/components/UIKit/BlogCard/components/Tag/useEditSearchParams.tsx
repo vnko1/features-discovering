@@ -33,6 +33,8 @@ export function useEditSearchParams(
     name
       ? params.set(name, formattedValue.trim())
       : params.delete(name);
-    router.replace(pathname + "?" + params.toString());
+    router.replace(pathname + "?" + params.toString(), {
+      scroll: false,
+    });
   };
 }
