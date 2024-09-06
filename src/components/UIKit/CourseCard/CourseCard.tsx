@@ -2,32 +2,29 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { CourseInterface } from "@/types/interfaces/course.interface";
 import styles from "./CourseCard.module.scss";
 
-type Lecturer = { name: string; description: string; photo: string };
-interface CourseCardProps {
+interface CourseCardProps extends Omit<CourseInterface, "lecturers"> {
   href: string;
-  id: number | string;
-  title: string;
-  isNew: boolean;
-  isMain: boolean;
-  lecturer: Lecturer;
   newCardText?: string;
   mainCardText?: string;
+  className?: string;
 }
 
 const CourseCard = ({
   title,
   isNew,
   isMain,
-  lecturer,
+  curator,
   href,
   id,
+  className,
   newCardText = "#Новий курс",
   mainCardText = "#ТОП",
 }: CourseCardProps) => {
   return (
-    <Link href={href + id} className={styles.card}>
+    <Link href={href + id} className={`${styles.card} ${className}`}>
       <h2 className={styles.title}>{title}</h2>
       <div className={styles.tags}>
         {isNew && <p>{newCardText}</p>}
@@ -35,16 +32,16 @@ const CourseCard = ({
       </div>
       <div className={styles.lecturer}>
         <Image
-          src={lecturer.photo}
-          alt={lecturer.description}
+          src={curator.curatorPhoto}
+          alt={curator.description}
           width={94}
           height={94}
           className={styles.lecturerPhoto}
         />
         <div className={styles.lecturerMeta}>
-          <p className={styles.lecturerName}>{lecturer.name}</p>
+          <p className={styles.lecturerName}>{curator.name}</p>
           <p className={styles.lecturerDescription}>
-            {lecturer.description}
+            {curator.description}
           </p>
         </div>
       </div>

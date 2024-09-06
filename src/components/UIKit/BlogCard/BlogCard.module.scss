@@ -1,0 +1,86 @@
+@use "/src/styles/utils/breakpoints" as *;
+
+.card {
+  display: block;
+
+  width: 100%;
+  padding: 10px;
+
+  border-radius: 50px;
+
+  background-color: var(--clr-primary-main);
+
+  @include sm {
+    border-radius: 28px;
+  }
+}
+
+.thumb {
+  position: relative;
+  aspect-ratio: 1/1;
+  margin-bottom: 32px;
+
+  border-radius: 40px;
+
+  overflow: hidden;
+
+  @include lg {
+    aspect-ratio: 3/2;
+  }
+
+  @include sm {
+    aspect-ratio: 1/1;
+
+    border-radius: 18px;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 20px 48px;
+}
+
+.meta {
+  display: flex;
+  gap: 18px;
+
+  & > p,
+  & > span {
+    font-weight: var(--font-weight-light);
+    font-size: clamp(1.125rem, 1.5vw + 0.5rem, 1.25rem);
+    line-height: clamp(1.35rem, 1.7vw + 0.3rem, 1.5rem);
+
+    color: var(--clr-txt-dark);
+  }
+}
+
+.title {
+  max-width: 70%;
+  font-weight: var(--font-weight-semibold);
+  font-size: clamp(1.875rem, 2.5vw + 1rem, 3.25rem);
+  line-height: clamp(2.063rem, 2.8vw + 0.5rem, 3.575rem);
+
+  color: var(--clr-txt-primary);
+
+  @include lg {
+    max-width: 48%;
+  }
+
+  @include sm {
+    max-width: 70%;
+  }
+}
+
+.tags {
+  display: flex;
+  gap: 16px;
+
+  & > p {
+    font-weight: var(--font-weight-regular);
+    font-size: clamp(1.125rem, 1.5vw + 0.5rem, 1.25rem);
+    line-height: clamp(1.35rem, 1.7vw + 0.3rem, 1.5rem);
+    color: var(--clr-accent);
+  }
+}
