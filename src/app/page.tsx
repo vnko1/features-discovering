@@ -4,6 +4,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="flex gap-3 flex-wrap">
+        <Link href={"/request"}>Request page</Link>
         <Link href={"/fetch"}>FETCH page</Link>
         <Link href={"/pay"}>PAY page</Link>
         <Link href={"/markdown"}>Markdown</Link>
